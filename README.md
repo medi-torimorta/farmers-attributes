@@ -9,8 +9,15 @@ It is recommended to use this with other mods that make use of the attributes, a
 ## Contents
 The mod currently implements the following attributes:
 
-**placeholder attribute**
-attribute description goes here
+**anti_farmland_trampling**  
+If True, prevents farmland trampling by the player.  
+
+**crouch_bonemeal_chance**  
+Chance (by percentage) for the bonemeal effect to be applied to nearby crops and saplings when the player spams or holds crouch.  
+The range and cooldown (in ticks, when holding crouch key) is configurable in the config.
+The affected blocks are defined by the tag `#farmingattributes:crouch_bonemeal_whitelist`, and includes the following by default:  
+`#minecraft:crops`  
+`#minecraft:saplings`
 
 ## Integration
 **X mod:**

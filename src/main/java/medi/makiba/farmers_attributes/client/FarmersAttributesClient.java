@@ -1,6 +1,6 @@
-package com.example.examplemod.client;
+package medi.makiba.farmers_attributes.client;
 
-import com.example.examplemod.FarmersAttributes;
+import medi.makiba.farmers_attributes.FarmersAttributes;
 
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
