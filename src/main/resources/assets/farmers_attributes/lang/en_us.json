@@ -1,0 +1,13 @@
+{
+  "itemGroup.farmers_attributes": "Example Mod Tab",
+  "block.farmers_attributes.example_block": "Example Block",
+  "item.farmers_attributes.example_item": "Example Item",
+
+  "farmers_attributes.configuration.title": "Farmer's Attributes Configs",
+  "farmers_attributes.configuration.section.farmers_attributes.common.toml": "Farmer's Attributes Configs",
+  "farmers_attributes.configuration.section.farmers_attributes.common.toml.title": "Farmer's Attributes Configs",
+  "farmers_attributes.configuration.items": "Item List",
+  "farmers_attributes.configuration.logDirtBlock": "Log Dirt Block",
+  "farmers_attributes.configuration.magicNumberIntroduction": "Magic Number Text",
+  "farmers_attributes.configuration.magicNumber": "Magic Number"
+}

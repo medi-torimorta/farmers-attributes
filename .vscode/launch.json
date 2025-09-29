@@ -1,0 +1,93 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "Client",
+      "presentation": {
+        "group": "Mod Development - farmers_attributes",
+        "order": 0
+      },
+      "projectName": "farmers_attributes",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@D:\\Data\\current\\mods\\farmers_attributes_mcmod\\farmers_attributes\\build\\moddev\\clientRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@D:\\Data\\current\\mods\\farmers_attributes_mcmod\\farmers_attributes\\build\\moddev\\clientRunVmArgs.txt",
+        "-Dfml.modFolders\u003dfarmers_attributes%%D:\\Data\\current\\mods\\farmers_attributes_mcmod\\farmers_attributes\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\run",
+      "env": {},
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    },
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "Data",
+      "presentation": {
+        "group": "Mod Development - farmers_attributes",
+        "order": 1
+      },
+      "projectName": "farmers_attributes",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@D:\\Data\\current\\mods\\farmers_attributes_mcmod\\farmers_attributes\\build\\moddev\\dataRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@D:\\Data\\current\\mods\\farmers_attributes_mcmod\\farmers_attributes\\build\\moddev\\dataRunVmArgs.txt",
+        "-Dfml.modFolders\u003dfarmers_attributes%%D:\\Data\\current\\mods\\farmers_attributes_mcmod\\farmers_attributes\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\run",
+      "env": {},
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    },
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "GameTestServer",
+      "presentation": {
+        "group": "Mod Development - farmers_attributes",
+        "order": 2
+      },
+      "projectName": "farmers_attributes",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@D:\\Data\\current\\mods\\farmers_attributes_mcmod\\farmers_attributes\\build\\moddev\\gameTestServerRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@D:\\Data\\current\\mods\\farmers_attributes_mcmod\\farmers_attributes\\build\\moddev\\gameTestServerRunVmArgs.txt",
+        "-Dfml.modFolders\u003dfarmers_attributes%%D:\\Data\\current\\mods\\farmers_attributes_mcmod\\farmers_attributes\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\run",
+      "env": {},
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    },
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "Server",
+      "presentation": {
+        "group": "Mod Development - farmers_attributes",
+        "order": 3
+      },
+      "projectName": "farmers_attributes",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@D:\\Data\\current\\mods\\farmers_attributes_mcmod\\farmers_attributes\\build\\moddev\\serverRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@D:\\Data\\current\\mods\\farmers_attributes_mcmod\\farmers_attributes\\build\\moddev\\serverRunVmArgs.txt",
+        "-Dfml.modFolders\u003dfarmers_attributes%%D:\\Data\\current\\mods\\farmers_attributes_mcmod\\farmers_attributes\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\run",
+      "env": {},
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    }
+  ]
+}
