@@ -15,7 +15,7 @@ If True, prevents farmlands from being trampled by the player.
 **crouch_bonemeal_chance**  
 Chance (by percentage) for the bonemeal effect to be applied to nearby crops and saplings when the player spams or holds crouch.  
 The range and cooldown (in ticks, when holding crouch key) is configurable in the config.
-The affected blocks are defined by the tag `#farmingattributes:crouch_bonemeal_whitelist`, and includes the following by default:  
+The affected blocks are defined by the tag `#farmers_attributes:crouch_bonemeal_whitelist`, and includes the following by default:  
 `#minecraft:crops`  
 `#minecraft:saplings`
 
