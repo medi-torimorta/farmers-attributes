@@ -9,12 +9,12 @@ It is recommended to use this with other mods that make use of the attributes, a
 ## Contents
 The mod currently implements the following attributes:
 
-### placeholder attribute 
+**placeholder attribute**
 attribute description goes here
 
 ## Integration
 **X mod:**
-- Y attribute
+- Y feature
 
 ## Installation
 needed on both server and client
