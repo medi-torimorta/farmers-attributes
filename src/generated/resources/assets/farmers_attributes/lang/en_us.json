@@ -4,7 +4,7 @@
   "attributes.farmers_attributes.crouch_bonemeal_chance": "Crouch Bonemeal Chance",
   "attributes.farmers_attributes.crouch_bonemeal_chance.desc": "Chance (in percent) to apply bonemeal effect when spamming or holding crouch.",
   "config.farmers_attributes.crouch_bonemeal_cooldown": "Bonemeal Effect Cooldown when holding crouch key",
-  "config.farmers_attributes.sneak_bonemeal_range": "Sneak Bonemeal Range",
+  "config.farmers_attributes.crouch_bonemeal_range": "Crouch Bonemeal Range",
   "farmers_attributes.configuration.section.farmers_attributes.common.toml": "Farmer's Attributes",
   "farmers_attributes.configuration.section.farmers_attributes.common.toml.title": "Farmer's Attributes",
   "farmers_attributes.configuration.title": "Configs",

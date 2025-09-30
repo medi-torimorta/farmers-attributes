@@ -36,7 +36,7 @@ public class CrouchBoneMeal {
     //runs on crouching
     public static void tryGrow(ServerLevel level, ServerPlayer player) {
         int chance = (int) player.getAttributeValue(FAAttributes.CROUCH_BONEMEAL_CHANCE);
-        if (chance <= 0) {
+        if (chance <= 0 || chance < level.random.nextDouble()) {
             return;
         }
         
@@ -50,18 +50,15 @@ public class CrouchBoneMeal {
 
         //reset cooldown and try growing
         player.setData(FAAttachmentTypes.CROUCH_BONEMEAL_COOLDOWN, FAConfig.CROUCH_BONEMEAL_COOLDOWN.get());
-
-        int range = FAConfig.SNEAK_BONEMEAL_RANGE.get();
+  
+        int range = FAConfig.CROUCH_BONEMEAL_RANGE.get();
         
         BlockPos pos = player.blockPosition();
-        var r = level.random;
 
         for (int x = -range; x <= range; x++) {
             for (int z = -range; z <= range; z++) {
                 for (int y = -1; y <= 1; y++) {
-                    if (chance < r.nextDouble() * 100) {
-                        continue;
-                    }
+                    
 
                     BlockPos offsetLocation = pos.offset(x, y, z);
                     BlockState offsetState = level.getBlockState(offsetLocation);
@@ -70,12 +67,11 @@ public class CrouchBoneMeal {
                         continue;
                     }
                     Block block = offsetState.getBlock();
-                    if (block instanceof BonemealableBlock
-                            && ((BonemealableBlock) block).isValidBonemealTarget(level, offsetLocation, offsetState)) {
+                    if (block instanceof BonemealableBlock bonemealableBlock
+                            && bonemealableBlock.isValidBonemealTarget(level, offsetLocation, offsetState)) {
                         Boolean result = BoneMealItem.applyBonemeal(new ItemStack(Items.BONE_MEAL), level, offsetLocation, player);
                         if (result) {
                             int count = 2;
-                            BonemealableBlock bonemealableBlock = (BonemealableBlock) block;
                             switch (bonemealableBlock.getType()) {
                                 case NEIGHBOR_SPREADER:
                                     ParticleUtils.spawnParticles(player, offsetLocation, count * 3, 3.0, 1.0, false, ParticleTypes.HAPPY_VILLAGER);

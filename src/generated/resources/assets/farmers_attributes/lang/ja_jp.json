@@ -4,7 +4,7 @@
   "attributes.farmers_attributes.crouch_bonemeal_chance": "しゃがみ骨粉効果確率",
   "attributes.farmers_attributes.crouch_bonemeal_chance.desc": "しゃがみを連打または長押しすると確率で周囲の植物に骨粉効果を適用します。",
   "config.farmers_attributes.crouch_bonemeal_cooldown": "しゃがみ長押し時の骨粉効果適用間隔",
-  "config.farmers_attributes.sneak_bonemeal_range": "しゃがみで骨粉効果を適用する範囲",
+  "config.farmers_attributes.crouch_bonemeal_range": "しゃがみで骨粉効果を適用する範囲",
   "farmers_attributes.configuration.section.farmers_attributes.common.toml": "Farmer's Attributes",
   "farmers_attributes.configuration.section.farmers_attributes.common.toml.title": "Farmer's Attributes",
   "farmers_attributes.configuration.title": "設定",

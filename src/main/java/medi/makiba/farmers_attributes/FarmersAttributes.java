@@ -2,8 +2,12 @@ package medi.makiba.farmers_attributes;
 
 import org.slf4j.Logger;
 
+import medi.makiba.farmers_attributes.compat.FarmersDelightCompat;
 import medi.makiba.farmers_attributes.registry.FAAttachmentTypes;
 import medi.makiba.farmers_attributes.registry.FAAttributes;
+import medi.makiba.farmers_attributes.registry.FADataComponentTypes;
+import medi.makiba.farmers_attributes.registry.FAMobEffects;
+
 import com.mojang.logging.LogUtils;
 
 import net.neoforged.bus.api.IEventBus;
@@ -11,6 +15,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
@@ -34,6 +39,8 @@ public class FarmersAttributes {
 
         FAAttributes.ATTRIBUTES.register(modEventBus);
         FAAttachmentTypes.ATTACHMENT_TYPES.register(modEventBus);
+        FAMobEffects.MOB_EFFECTS.register(modEventBus);
+        FADataComponentTypes.DATA_COMPONENT_TYPES.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (FarmersAttributes) to respond directly to events.
@@ -46,8 +53,10 @@ public class FarmersAttributes {
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
-        // Some common setup code
-        LOGGER.info("HELLO FROM COMMON SETUP");
+        if (ModList.get().isLoaded("farmersdelight")) {
+            LOGGER.info("Farmers Delight detected, loading compat");
+            FarmersDelightCompat.register();
+        }
 
     }
 

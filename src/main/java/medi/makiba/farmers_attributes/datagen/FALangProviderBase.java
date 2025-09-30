@@ -30,6 +30,11 @@ public abstract class FALangProviderBase extends LanguageProvider{
         add("attributes." + this.modid + "." + attributeName, name);
         add("attributes." + this.modid + "." + attributeName + ".desc", Description);
     }
+
+    protected void addEffect(String effectName, String name, String Description) {
+        add("effect." + this.modid + "." + effectName, name);
+        add("effect." + this.modid + "." + effectName + ".desc", Description);
+    }
 }
 
 

@@ -13,4 +13,8 @@ public class FAAttachmentTypes {
     public static final Supplier<AttachmentType<Integer>> CROUCH_BONEMEAL_COOLDOWN = ATTACHMENT_TYPES.register(
         "crouch_bonemeal_cooldown", () -> AttachmentType.builder(() -> 0).build()
     );
+
+    public static final Supplier<AttachmentType<Integer>> COOKING_BLOCK_ZESTY_AMPLIFIER = ATTACHMENT_TYPES.register(
+        "cooking_block_zesty_amplifier", () -> AttachmentType.builder(() -> 0).build()
+    );
 }
