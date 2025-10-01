@@ -28,7 +28,7 @@ Attribute value = `(amplifier +1)` + `(durationSeconds/300)-0.1`
 ex. Attribute of `1.0` will give Appetite I for 30 seconds, `3.23` III for 99 seconds, `2.9` II for 5min.  
 Basically, it gives base 30secs + additional 30 seconds per 0.1 attribute value. 
 
-###MobEffects 
+### MobEffects  
 **Appetite**  
 at level 1 : Allows the player to eat even when they're full 
 at level 2+: adds x0.5(configurable) of the original duration per (level-1), when the player gains any other food effects.   
