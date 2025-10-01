@@ -65,7 +65,6 @@ public class CampFireBlockEntityMixin {
     */
     @Inject(method = "Lnet/minecraft/world/level/block/entity/CampfireBlockEntity;cookTick(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/CampfireBlockEntity;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/Containers;dropItemStack(Lnet/minecraft/world/level/Level;DDDLnet/minecraft/world/item/ItemStack;)V"))
     private static void checkForAppetiteAoe(CallbackInfo ci, @Local int i, @Local Level level, @Local BlockPos pos, @Local LocalRef<CampfireBlockEntity> blockEntity) {
-        System.out.println("Campfire cookTick: cooked item");
         if (!(level instanceof ServerLevel serverLevel)) {
             return;
         }
@@ -85,7 +84,6 @@ public class CampFireBlockEntityMixin {
             }
             blockEntity.set(cbe);
         }
-
     }
 
 

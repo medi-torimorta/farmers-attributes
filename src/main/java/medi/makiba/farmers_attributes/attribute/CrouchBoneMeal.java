@@ -35,7 +35,7 @@ public class CrouchBoneMeal {
 
     //runs on crouching
     public static void tryGrow(ServerLevel level, ServerPlayer player) {
-        int chance = (int) player.getAttributeValue(FAAttributes.CROUCH_BONEMEAL_CHANCE);
+        double chance = player.getAttributeValue(FAAttributes.CROUCH_BONEMEAL_CHANCE);
         if (chance <= 0 || chance < level.random.nextDouble()) {
             return;
         }
