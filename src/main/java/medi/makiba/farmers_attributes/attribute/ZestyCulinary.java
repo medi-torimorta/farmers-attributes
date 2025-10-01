@@ -2,7 +2,6 @@ package medi.makiba.farmers_attributes.attribute;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import com.google.common.collect.Lists;
 

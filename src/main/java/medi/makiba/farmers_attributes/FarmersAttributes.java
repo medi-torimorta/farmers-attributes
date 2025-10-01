@@ -2,7 +2,6 @@ package medi.makiba.farmers_attributes;
 
 import org.slf4j.Logger;
 
-import medi.makiba.farmers_attributes.compat.FarmersDelightCompat;
 import medi.makiba.farmers_attributes.registry.FAAttachmentTypes;
 import medi.makiba.farmers_attributes.registry.FAAttributes;
 import medi.makiba.farmers_attributes.registry.FAMobEffects;
@@ -53,7 +52,7 @@ public class FarmersAttributes {
     private void commonSetup(FMLCommonSetupEvent event) {
         if (ModList.get().isLoaded("farmersdelight")) {
             LOGGER.info("Farmers Delight detected, loading compat");
-            FarmersDelightCompat.register();
+            //FarmersDelightCompat.register();
         }
 
     }
