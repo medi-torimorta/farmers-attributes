@@ -1,4 +1,4 @@
-package medi.makiba.farmers_attributes.client;
+/*package medi.makiba.farmers_attributes.client;
 
 import medi.makiba.farmers_attributes.FarmersAttributes;
 
@@ -30,4 +30,4 @@ public class FarmersAttributesClient {
         FarmersAttributes.LOGGER.info("HELLO FROM CLIENT SETUP");
         FarmersAttributes.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
     }
-}
+}*/

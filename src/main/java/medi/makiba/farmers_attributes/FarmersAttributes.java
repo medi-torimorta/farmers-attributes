@@ -5,7 +5,6 @@ import org.slf4j.Logger;
 import medi.makiba.farmers_attributes.compat.FarmersDelightCompat;
 import medi.makiba.farmers_attributes.registry.FAAttachmentTypes;
 import medi.makiba.farmers_attributes.registry.FAAttributes;
-import medi.makiba.farmers_attributes.registry.FADataComponentTypes;
 import medi.makiba.farmers_attributes.registry.FAMobEffects;
 
 import com.mojang.logging.LogUtils;
@@ -40,7 +39,6 @@ public class FarmersAttributes {
         FAAttributes.ATTRIBUTES.register(modEventBus);
         FAAttachmentTypes.ATTACHMENT_TYPES.register(modEventBus);
         FAMobEffects.MOB_EFFECTS.register(modEventBus);
-        FADataComponentTypes.DATA_COMPONENT_TYPES.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (FarmersAttributes) to respond directly to events.

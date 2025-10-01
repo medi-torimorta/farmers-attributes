@@ -3,6 +3,7 @@ package medi.makiba.farmers_attributes.registry;
 import java.util.function.Supplier;
 
 import medi.makiba.farmers_attributes.FarmersAttributes;
+import medi.makiba.farmers_attributes.datacomponents.ZestyCulinaryRecord;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
@@ -14,7 +15,7 @@ public class FAAttachmentTypes {
         "crouch_bonemeal_cooldown", () -> AttachmentType.builder(() -> 0).build()
     );
 
-    public static final Supplier<AttachmentType<Integer>> COOKING_BLOCK_ZESTY_AMPLIFIER = ATTACHMENT_TYPES.register(
-        "cooking_block_zesty_amplifier", () -> AttachmentType.builder(() -> 0).build()
+    public static final Supplier<AttachmentType<ZestyCulinaryRecord>> ZESTY_CULINARY = ATTACHMENT_TYPES.register(
+        "zesty_culinary", () -> AttachmentType.builder(() -> new ZestyCulinaryRecord()).serialize(ZestyCulinaryRecord.CODEC).build()
     );
 }

@@ -4,7 +4,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
-import medi.makiba.farmers_attributes.effects.AppetiteEffect;
+import medi.makiba.farmers_attributes.effect.AppetiteEffect;
 import medi.makiba.farmers_attributes.registry.FAMobEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;

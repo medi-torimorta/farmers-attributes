@@ -16,10 +16,10 @@ public class FALangProviderEnUs extends FALangProviderBase {
         addConfig("config.farmers_attributes.appetite_effect_duration_multiplier", "Appetite Effect Duration Multiplier");
         // Attributes
         addAttribute("anti_farmland_trampling", "Anti Farmland Trampling", "Prevents farmland trampling.");
-        addAttribute("crouch_bonemeal_chance", "Crouch Bonemeal Chance", "Chance in percent to apply bonemeal effect when spamming or holding crouch.");
+        addAttribute("crouch_bonemeal_chance", "Crouch Bonemeal Chance", "Chance to apply bonemeal effect when spamming or holding crouch.");
         addAttribute("zesty_culinary", "Zesty Culinary", "Applies the Appetite effect when cooking food.");
         // Effects
-        addEffect("appetite", "Appetite", "Extends the duration of beneficial effects when eating food.");
+        addEffect("appetite", "Appetite", "Never get full, and extends the duration of beneficial effects when eating food at higher levels.");
         //tags
         addTag("crouch_bonemeal_whitelist", "Can be bonemealed by crouching");
     }

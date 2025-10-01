@@ -20,7 +20,8 @@ public class FALangProviderJaJp extends FALangProviderBase {
         addAttribute("anti_farmland_trampling", "農地踏み荒らし防止", "農地を踏み荒らしません。");
         addAttribute("crouch_bonemeal_chance", "しゃがみ骨粉効果確率", "しゃがみを連打または長押しすると確率で周囲の植物に骨粉効果を適用します。");
         addAttribute("zesty_culinary", "料理上手", "食べ物を調理すると食欲エフェクトを付与します。");
-        
+        // Effects
+        addEffect("appetite", "食欲増進", "満腹でも食事ができ、高レベルでは有益な食事効果の持続時間が延びます。");
         // Tags
         addTag("crouch_bonemeal_whitelist", "しゃがみで成長促進可能");
     }
