@@ -9,7 +9,10 @@ public class FAConfig {
 
     public static final ModConfigSpec.IntValue CROUCH_BONEMEAL_RANGE;
     public static final ModConfigSpec.IntValue CROUCH_BONEMEAL_COOLDOWN;
+    public static final ModConfigSpec.IntValue ZESTY_AOE_RADIUS_COOK;
+    public static final ModConfigSpec.IntValue ZESTY_AOE_RADIUS_PLACE;
     public static final ModConfigSpec.DoubleValue APPETITE_EFFECT_DURATION_MULTIPLIER;
+
     static final ModConfigSpec SPEC;
 
     static {
@@ -24,6 +27,17 @@ public class FAConfig {
             .comment("Crouch Bonemeal cooldown in ticks, only used when holding the crouch key")
             .translation("config.farmers_attributes.crouch_bonemeal_cooldown")
             .defineInRange("crouchBonemealCooldown", 20, 0, 600);
+        
+        ZESTY_AOE_RADIUS_COOK = BUILDER
+            .comment("Radius in blocks for the appetite effect AoE from campfire cooking")
+            .translation("config.farmers_attributes.zesty_aoe_radius_cook")
+            .defineInRange("zestyAoeRadiusCook", 8, 0, 32);
+        
+        ZESTY_AOE_RADIUS_PLACE = BUILDER
+            .comment("Radius in blocks for the appetite effect AoE from food placement")
+            .translation("config.farmers_attributes.zesty_aoe_radius_place")
+            .defineInRange("zestyAoeRadiusPlace", 5, 0, 32);
+
 
         BUILDER.pop();
         BUILDER.push("effects");
@@ -32,7 +46,7 @@ public class FAConfig {
             .comment("Multiplier for all beneficial food effects when the appetite effect is active when the amplifier > 1.\nthe formula is 1+(value*amplifier)\nE.g. set this to 0.5 for 1.5x duration at amplifier 1.")
             .translation("config.farmers_attributes.appetite_effect_duration_multiplier")
             .defineInRange("appetiteEffectDurationMultiplier", 0.5, 0.0, 10.0);
-
+        
         BUILDER.pop();
         SPEC = BUILDER.build();
     }

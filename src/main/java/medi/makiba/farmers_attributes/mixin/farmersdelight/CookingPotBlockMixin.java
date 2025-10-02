@@ -45,11 +45,10 @@ public class CookingPotBlockMixin {
       return ItemInteractionResult.SUCCESS;
    }
      */
-    @Inject(method = "useItemOn", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;playSound(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V"))
-    private void applyEffect(CallbackInfoReturnable<Void> cir, @Local Player player) {
-        if (player instanceof ServerPlayer serverPlayer) {
-            ZestyCulinary.applyAppetiteOnCrafting(serverPlayer);
-        }
-    }
-
+   @Inject(method = "useItemOn", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;playSound(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V"))
+   private void applyEffect(CallbackInfoReturnable<Void> cir, @Local Player player) {
+      if (player instanceof ServerPlayer serverPlayer) {
+         ZestyCulinary.applyAppetiteOnCrafting(serverPlayer);
+      }
+   }
 }

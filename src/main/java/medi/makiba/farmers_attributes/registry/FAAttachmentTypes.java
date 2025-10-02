@@ -3,7 +3,7 @@ package medi.makiba.farmers_attributes.registry;
 import java.util.function.Supplier;
 
 import medi.makiba.farmers_attributes.FarmersAttributes;
-import medi.makiba.farmers_attributes.datacomponents.ZestyCulinaryRecord;
+import medi.makiba.farmers_attributes.datacomponent.ZestyCulinaryRecord;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;

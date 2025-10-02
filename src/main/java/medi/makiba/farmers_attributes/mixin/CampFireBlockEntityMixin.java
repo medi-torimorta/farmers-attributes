@@ -7,17 +7,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.llamalad7.mixinextras.sugar.Local;
-import com.llamalad7.mixinextras.sugar.ref.LocalRef;
 
 import medi.makiba.farmers_attributes.attribute.ZestyCulinary;
-import medi.makiba.farmers_attributes.datacomponents.ZestyCulinaryRecord;
-import medi.makiba.farmers_attributes.registry.FAAttachmentTypes;
-import medi.makiba.farmers_attributes.registry.FAAttributes;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeMap;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.CampfireBlockEntity;
 
@@ -59,26 +51,8 @@ public class CampFireBlockEntityMixin {
         }
     */
     @Inject(method = "Lnet/minecraft/world/level/block/entity/CampfireBlockEntity;cookTick(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/CampfireBlockEntity;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/Containers;dropItemStack(Lnet/minecraft/world/level/Level;DDDLnet/minecraft/world/item/ItemStack;)V"))
-    private static void checkForAppetiteAoe(CallbackInfo ci, @Local int i, @Local Level level, @Local BlockPos pos, @Local LocalRef<CampfireBlockEntity> blockEntity) {
-        if (!(level instanceof ServerLevel serverLevel)) {
-            return;
-        }
-        CampfireBlockEntity cbe = blockEntity.get();
-        if (cbe.hasData(FAAttachmentTypes.ZESTY_CULINARY)) {
-            ZestyCulinaryRecord cbeData = cbe.getData(FAAttachmentTypes.ZESTY_CULINARY);
-            double attributeValue = cbeData.getAttValueForSlot(i);
-            if (attributeValue >= 0) {
-                ZestyCulinary.applyAppetiteAoeOnDrop(serverLevel, pos, attributeValue);
-            }
-            //remove ZESTY_CULINARY for the slot
-            cbeData = cbeData.updatedWith(i, 0);
-            if (cbeData == null) {
-                cbe.removeData(FAAttachmentTypes.ZESTY_CULINARY);
-            } else {
-                cbe.setData(FAAttachmentTypes.ZESTY_CULINARY, cbeData);
-            }
-            blockEntity.set(cbe);
-        }
+    private static void checkForAppetiteAoe(CallbackInfo ci, @Local int i, @Local CampfireBlockEntity cbe) {
+        ZestyCulinary.checkAoeUponDrop(cbe, i, true);
     }
 
 
@@ -103,16 +77,8 @@ public class CampFireBlockEntityMixin {
      */
     @Inject(method = "Lnet/minecraft/world/level/block/entity/CampfireBlockEntity;placeFood(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;I)Z", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/entity/CampfireBlockEntity;markUpdated()V"))
     private void addZestyRecord(CallbackInfoReturnable<Void> cir, @Local LivingEntity entity, @Local(ordinal = 1) int i) {
-        if (entity != null && !entity.level().isClientSide) {
-
-            LivingEntity le = entity;
-            AttributeMap attributes = le.getAttributes();
-            if (attributes.hasAttribute(FAAttributes.ZESTY_CULINARY)) {
-                int attributeValue = (int) attributes.getValue(FAAttributes.ZESTY_CULINARY);
-                if (attributeValue >= 1) {
-                    ZestyCulinary.addData(le, i, (BlockEntity)(Object)this);
-                }
-            }
+        if (entity != null) {
+            ZestyCulinary.addData(entity, i, (BlockEntity)(Object)this);
         }
     }
 }

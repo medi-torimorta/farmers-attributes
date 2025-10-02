@@ -5,7 +5,8 @@ import java.util.Map;
 
 import com.google.common.collect.Lists;
 
-import medi.makiba.farmers_attributes.datacomponents.ZestyCulinaryRecord;
+import medi.makiba.farmers_attributes.FAConfig;
+import medi.makiba.farmers_attributes.datacomponent.ZestyCulinaryRecord;
 import medi.makiba.farmers_attributes.registry.FAAttachmentTypes;
 import medi.makiba.farmers_attributes.registry.FAAttributes;
 import medi.makiba.farmers_attributes.registry.FAMobEffects;
@@ -37,19 +38,39 @@ public class ZestyCulinary {
         }
     }
 
-    public static void applyAppetiteAoeOnCrafting(ServerPlayer player) {
+    public static void applyAppetiteAoeOnPlacement(ServerPlayer player, ServerLevel level, BlockPos pos) {
         double attribute_value = player.getAttributeValue(FAAttributes.ZESTY_CULINARY);
         if (attribute_value >= 1) {
             Tuple<Integer, Integer> values = getValues(attribute_value);
             int amplifier = values.getA();
             int duration = values.getB();
-            applyAppetiteAoe(player.serverLevel(), player.blockPosition(), 8, duration, amplifier);
+            int range = FAConfig.ZESTY_AOE_RADIUS_PLACE.get();
+            applyAppetiteAoe(level, pos, range, duration, amplifier);
+        }
+    }
+
+    public static void checkAoeUponDrop(BlockEntity blockEntity, int slot, boolean lastInSlot){
+        if (blockEntity.getLevel() instanceof ServerLevel serverLevel && blockEntity.hasData(FAAttachmentTypes.ZESTY_CULINARY)) {
+            BlockPos pos = blockEntity.getBlockPos();
+            ZestyCulinaryRecord data = blockEntity.getData(FAAttachmentTypes.ZESTY_CULINARY);
+            double attributeValue = data.getAttValueForSlot(slot);
+            if (attributeValue >= 0) {
+                ZestyCulinary.applyAppetiteAoeOnDrop(serverLevel, pos, attributeValue);
+            }
+            if (lastInSlot){
+                ZestyCulinaryRecord dataAfter = data.updatedWith(slot, 0);
+                if (dataAfter == null) {
+                    blockEntity.removeData(FAAttachmentTypes.ZESTY_CULINARY);
+                } else {
+                    blockEntity.setData(FAAttachmentTypes.ZESTY_CULINARY, dataAfter);
+                }
+            }
         }
     }
 
     public static void applyAppetiteAoeOnDrop(ServerLevel level, BlockPos blockpos, double attributeValue) {
         if (attributeValue >= 1) {
-            int range = 8;
+            int range = FAConfig.ZESTY_AOE_RADIUS_COOK.get();
             Tuple <Integer, Integer> values = getValues(attributeValue);
             int amplifier = values.getA();
             int duration = values.getB();
@@ -100,6 +121,9 @@ public class ZestyCulinary {
     }
 
     public static void addData(LivingEntity entity, int slot, BlockEntity be) {
+        if (entity.level().isClientSide) {
+            return;
+        }
         AttributeMap attributes = entity.getAttributes();
         Double attribute_value = attributes.hasAttribute(FAAttributes.ZESTY_CULINARY)
                 ? attributes.getValue(FAAttributes.ZESTY_CULINARY)
@@ -110,6 +134,7 @@ public class ZestyCulinary {
     public static void setData(Map<String, Double> slot_amps, BlockEntity be) {
         ZestyCulinaryRecord new_record = new ZestyCulinaryRecord(slot_amps);
         be.setData(FAAttachmentTypes.ZESTY_CULINARY, new_record);
-    
     }
+
+
 }

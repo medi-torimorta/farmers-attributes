@@ -18,11 +18,11 @@ Chance for the bonemeal effect to be applied to nearby crops and saplings when t
 The range and cooldown (in ticks, when holding crouch key) is configurable in the config.
 The affected blocks are defined by the tag `#farmers_attributes:crouch_bonemeal_whitelist`, and includes the following by default:  
 `#minecraft:crops`  
-`#minecraft:saplings`
+`#minecraft:saplings`  
 
 **zesty_culinary**  
 If 1+, gain the Appetite MobEffect for 30 seconds upon crafting any food.  
-Cooking with the campfire will grant this effect for all players in range.
+Cooking with the campfire will grant this effect for all players in a radius.
 The level of the effect will be equal to the attribute value's Integer, and the fraction(Decimal) will be used to determine the effect duration.  
 The formula is as follows:  
 Attribute value = `(effect level)` + `(durationSeconds/300-0.1)`  
@@ -35,7 +35,9 @@ at level 1 : Allows the player to eat even when they're full
 at level 2+: when the player gains any other positive food effects, adds x0.5(configurable) of the original duration per (level-1)   
 
 ## Integration
-Farmer's delight compat is planned
+**Farmer's Delight**  
+zesty_culinary works on skillets and cooking pots.
+The skillet will apply the Appetite effect in an a radius like the campfire.
 
 ## Installation
 needed on both server and client

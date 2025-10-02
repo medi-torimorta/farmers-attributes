@@ -1,4 +1,4 @@
-package medi.makiba.farmers_attributes.datacomponents;
+package medi.makiba.farmers_attributes.datacomponent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,7 +41,7 @@ public record ZestyCulinaryRecord(Map<String, Double> map) {
     }
 
     public static final Codec<ZestyCulinaryRecord> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-        Codec.unboundedMap(Codec.STRING, Codec.DOUBLE).fieldOf("outputslot_amps").forGetter(ZestyCulinaryRecord::map)
+        Codec.unboundedMap(Codec.STRING, Codec.DOUBLE).fieldOf("values").forGetter(ZestyCulinaryRecord::map)
     ).apply(instance, ZestyCulinaryRecord::new));
 
 }

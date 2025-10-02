@@ -1,8 +1,6 @@
 package medi.makiba.farmers_attributes.mixin.farmersdelight;
 
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;

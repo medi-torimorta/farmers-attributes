@@ -3,7 +3,15 @@
   "package": "medi.makiba.farmers_attributes.mixin",
   "plugin": "medi.makiba.farmers_attributes.mixin.MixinPlugin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": ["LivingEntityMixin", "PlayerMixin", "CampFireBlockEntityMixin", "farmersdelight.CookingPotBlockMixin", "farmersdelight.CookingPotResultSlotMixin", "farmersdelight.CookingPotMenuMixin"],
+  "mixins": [
+    "LivingEntityMixin",
+    "PlayerMixin",
+    "CampFireBlockEntityMixin",
+    "farmersdelight.CookingPotBlockMixin",
+    "farmersdelight.CookingPotResultSlotMixin",
+    "farmersdelight.CookingPotMenuMixin",
+    "farmersdelight.SkilletBlockEntityMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   },
