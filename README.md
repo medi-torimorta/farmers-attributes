@@ -3,7 +3,6 @@
 
 ## Overview
 This mod adds multiple player attributes related to farming and cooking.
-Please download from CurseForge:  
 
 ## Usage
 It is recommended to use this with other mods that make use of the attributes, as the mod itself doesn't do anything other than adding the attributes to the game.
