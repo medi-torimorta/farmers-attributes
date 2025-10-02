@@ -1,10 +1,5 @@
+<img src="https://img.shields.io/curseforge/dt/1355713?style=flat&logo=CurseForge&logoColor=%23F16436&label=CurseForge&color=%23F16436&link=https%3A%2F%2Fwww.curseforge.com%2Fminecraft%2Fmc-mods%2Ffarmers-attributes" alt="CurseForge Downloads">  <img src="https://img.shields.io/badge/MC-1.21.1+-green?style=flat&logo=minecraft&logoColor=white" alt="Minecraft Versions">  <img src="https://img.shields.io/badge/Side-Server%26Client-orange?style=flat" alt="Server Side">  <img src="https://img.shields.io/github/license/medi-torimorta/farmers-attributes?style=flat&color=purple" alt="License">
 # Farmer's Attributes
-
-  <img src="https://img.shields.io/curseforge/dt/1355713?style=flat&logo=CurseForge&logoColor=%23F16436&label=CurseForge&color=%23F16436&link=https%3A%2F%2Fwww.curseforge.com%2Fminecraft%2Fmc-mods%2Ffarmers-attributes" alt="CurseForge Downloads">
-  <img src="https://img.shields.io/badge/MC-1.21.1+-green?style=flat&logo=minecraft&logoColor=white" alt="Minecraft Versions">
-  <img src="https://img.shields.io/badge/Side-Server%26Client-orange?style=flat" alt="Server Side">
-  <img src="https://img.shields.io/github/license/medi-torimorta/farmers-attributes?style=flat&color=purple" alt="License">
-
 
 ## Overview
 This mod adds multiple player attributes related to farming and cooking.
