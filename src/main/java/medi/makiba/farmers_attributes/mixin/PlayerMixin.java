@@ -1,9 +1,8 @@
 package medi.makiba.farmers_attributes.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 
 import medi.makiba.farmers_attributes.registry.FAMobEffects;
 import net.minecraft.world.entity.player.Player;
@@ -18,10 +17,9 @@ import net.minecraft.world.entity.player.Player;
  */
 @Mixin(Player.class)
 public class PlayerMixin {
-    @Inject(method = "canEat", at = @At("RETURN"), cancellable = true)
-    private void canEat(CallbackInfoReturnable<Boolean> cir) {
-        if (!cir.getReturnValue() && ((Player)(Object)this).hasEffect(FAMobEffects.APPETITE_EFFECT)) {
-            cir.setReturnValue(true);
-        }
+    @ModifyExpressionValue(method = "canEat", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/food/FoodData;needsFood()Z"))
+    private boolean canEat(boolean original) {
+        Player player = (Player)(Object)this;
+        return original || player.hasEffect(FAMobEffects.APPETITE_EFFECT);
     }
 }
