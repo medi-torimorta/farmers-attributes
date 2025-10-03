@@ -38,7 +38,7 @@ at level 2+: when the player gains any other positive food effects, adds x0.5(co
 
 ## Configuration
 **crouch_bonemeal_chance**  
-The range and cooldown (in ticks, when holding crouch key) is configurable in the config.  
+The range and cooldown (in ticks, when holding crouch key) is configurable in the configs.  
 The affected blocks are defined by the tag `#farmers_attributes:crouch_bonemeal_whitelist`.
 
 **zesty_culinary**  
