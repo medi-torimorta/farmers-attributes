@@ -12,11 +12,14 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent.ItemCraftedEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent.ItemSmeltedEvent;
+import net.neoforged.neoforge.event.level.BlockEvent.EntityPlaceEvent;
 import net.neoforged.neoforge.event.level.BlockEvent.FarmlandTrampleEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
@@ -56,6 +59,7 @@ public class FAEvents {
         CrouchBoneMeal.tickCrouchBoneMeal((ServerLevel) event.getEntity().level(), (ServerPlayer) player);
     }
 
+    @SuppressWarnings("null")
     @SubscribeEvent
     public static void craftZestyCulinary(ItemCraftedEvent event) {
         Player player = event.getEntity();
@@ -70,6 +74,8 @@ public class FAEvents {
         }
     }
 
+
+    @SuppressWarnings("null")
     @SubscribeEvent
     public static void smeltZestyCulinary(ItemSmeltedEvent event) {
         Player player = event.getEntity();
@@ -82,5 +88,15 @@ public class FAEvents {
                 ZestyCulinary.applyAppetiteOnCrafting((ServerPlayer) player);
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void placeZestyCulinary(EntityPlaceEvent event) {
+        Entity entity = event.getEntity();
+        if (entity instanceof ServerPlayer player && event.getLevel() instanceof ServerLevelAccessor level) {
+            if (new ItemStack(event.getPlacedBlock().getBlock().asItem()).is(Tags.Items.FOODS_EDIBLE_WHEN_PLACED)) {
+                ZestyCulinary.applyAppetiteAoeOnPlacement(player, level, event.getPos(), event.getPlacedBlock());
+            }
+        }  
     }
 }

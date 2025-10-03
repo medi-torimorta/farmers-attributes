@@ -10,7 +10,8 @@
     "farmersdelight.CookingPotBlockMixin",
     "farmersdelight.CookingPotResultSlotMixin",
     "farmersdelight.CookingPotMenuMixin",
-    "farmersdelight.SkilletBlockEntityMixin"
+    "farmersdelight.SkilletBlockEntityMixin",
+    "farmersdelight.SkilletItemMixin"
   ],
   "injectors": {
     "defaultRequire": 1

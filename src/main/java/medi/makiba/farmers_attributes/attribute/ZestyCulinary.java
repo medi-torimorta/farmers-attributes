@@ -10,6 +10,7 @@ import medi.makiba.farmers_attributes.datacomponent.ZestyCulinaryRecord;
 import medi.makiba.farmers_attributes.registry.FAAttachmentTypes;
 import medi.makiba.farmers_attributes.registry.FAAttributes;
 import medi.makiba.farmers_attributes.registry.FAMobEffects;
+import medi.makiba.farmers_attributes.registry.FATags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -17,7 +18,10 @@ import net.minecraft.util.Tuple;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 
 public class ZestyCulinary {
@@ -38,13 +42,29 @@ public class ZestyCulinary {
         }
     }
 
-    public static void applyAppetiteAoeOnPlacement(ServerPlayer player, ServerLevel level, BlockPos pos) {
+    public static void applyAppetiteAoeOnPlacement(ServerPlayer player, ServerLevelAccessor level, BlockPos pos, BlockState state) {
+        if (!state.is(FATags.Blocks.DELICIOUS_SMELLING_BLOCKS)) {
+            return;
+        }
         double attribute_value = player.getAttributeValue(FAAttributes.ZESTY_CULINARY);
         if (attribute_value >= 1) {
             Tuple<Integer, Integer> values = getValues(attribute_value);
             int amplifier = values.getA();
             int duration = values.getB();
             int range = FAConfig.ZESTY_AOE_RADIUS_PLACE.get();
+            applyAppetiteAoe(level, pos, range, duration, amplifier);
+        }
+    }
+
+    public static void applyAppetiteAoeOnCooking(ServerPlayer player) {
+        double attribute_value = player.getAttributeValue(FAAttributes.ZESTY_CULINARY);
+        if (attribute_value >= 1) {
+            Tuple<Integer, Integer> values = getValues(attribute_value);
+            int amplifier = values.getA();
+            int duration = values.getB();
+            int range = FAConfig.ZESTY_AOE_RADIUS_PLACE.get();
+            ServerLevel level = player.serverLevel();
+            BlockPos pos = player.blockPosition();
             applyAppetiteAoe(level, pos, range, duration, amplifier);
         }
     }
@@ -68,7 +88,7 @@ public class ZestyCulinary {
         }
     }
 
-    public static void applyAppetiteAoeOnDrop(ServerLevel level, BlockPos blockpos, double attributeValue) {
+    public static void applyAppetiteAoeOnDrop(ServerLevelAccessor level, BlockPos blockpos, double attributeValue) {
         if (attributeValue >= 1) {
             int range = FAConfig.ZESTY_AOE_RADIUS_COOK.get();
             Tuple <Integer, Integer> values = getValues(attributeValue);
@@ -78,16 +98,15 @@ public class ZestyCulinary {
         }
     }
 
-    public static void applyAppetiteAoe(ServerLevel level, BlockPos blockpos, int range, int duration,
+    public static void applyAppetiteAoe(ServerLevelAccessor level, BlockPos blockpos, int range, int duration,
             int amplifier) {
-        List<ServerPlayer> list = Lists.newArrayList();
-
-        for (ServerPlayer player : level.players()) {
+        List<Player> list = Lists.newArrayList();
+        for (Player player : level.players()) {
             if (new AABB(blockpos).inflate(range).contains(player.getX(), player.getY(), player.getZ())) {
                 list.add(player);
             }
         }
-        for (ServerPlayer target : list) {
+        for (Player target : list) {
             target.addEffect(new MobEffectInstance(FAMobEffects.APPETITE_EFFECT, duration, amplifier));
         }
 
@@ -97,6 +116,7 @@ public class ZestyCulinary {
         player.addEffect(new MobEffectInstance(FAMobEffects.APPETITE_EFFECT, duration, amplifier));
     }
 
+    @SuppressWarnings("null")
     public static void addData(double attributeValue, int slot, BlockEntity be) {
         if (attributeValue >= 1) {
             if (be.hasData(FAAttachmentTypes.ZESTY_CULINARY)) {

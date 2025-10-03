@@ -3,6 +3,7 @@ package medi.makiba.farmers_attributes.mixin.farmersdelight;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.At;
 
 import medi.makiba.farmers_attributes.attribute.ZestyCulinary;
 import net.minecraft.world.item.ItemStack;
@@ -32,7 +33,7 @@ public class CookingPotResultSlotMixin {
    }
      */
 
-    @Inject(method = "checkTakeAchievements", at = @org.spongepowered.asm.mixin.injection.At("TAIL"))
+    @Inject(method = "checkTakeAchievements", at = @At("TAIL"))
     private void applyEffect(ItemStack stack, CallbackInfo ci) {
         if (this.player instanceof ServerPlayer serverPlayer && stack.getFoodProperties(serverPlayer) != null) {
             ZestyCulinary.applyAppetiteOnCrafting(serverPlayer);

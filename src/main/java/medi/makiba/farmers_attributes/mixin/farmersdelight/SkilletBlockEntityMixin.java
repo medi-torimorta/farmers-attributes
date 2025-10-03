@@ -75,7 +75,7 @@ public class SkilletBlockEntityMixin {
    }
     */
    @Inject(method = "addItemToCook", at = @At(value = "INVOKE", target = "Lvectorwing/farmersdelight/common/block/SkilletBlock;getSkilletCookingTime(I I)I"))
-   public void addZestyRecord(ItemStack addedStack, Player player, CallbackInfoReturnable<ItemStack> cir) {
+   private void addZestyRecord(ItemStack addedStack, Player player, CallbackInfoReturnable<ItemStack> cir) {
       ZestyCulinary.addData(player, 0, (SkilletBlockEntity)(Object)this);
    }
 
@@ -88,7 +88,7 @@ public class SkilletBlockEntityMixin {
      * }
      */
    @Inject(method = "removeItem", at = @At("HEAD"))
-   public void removeZestyRecord(CallbackInfoReturnable<ItemStack> cir) {
+   private void removeZestyRecord(CallbackInfoReturnable<ItemStack> cir) {
          ZestyCulinary.addData(0, 0,(SkilletBlockEntity)(Object)this);
    }
 }

@@ -24,6 +24,7 @@ import net.minecraft.world.entity.LivingEntity;
  */
 @Mixin(LivingEntity.class)
 public class LivingEntityMixin {
+    @SuppressWarnings("null")
     @ModifyExpressionValue(method = "addEatEffect", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/food/FoodProperties$PossibleEffect;effect()Lnet/minecraft/world/effect/MobEffectInstance;"))
     private MobEffectInstance modifyEffectDuration(MobEffectInstance effectInstance) {
         if (((LivingEntity)(Object)this).hasEffect(FAMobEffects.APPETITE_EFFECT)) {
