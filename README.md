@@ -33,22 +33,23 @@ Basically, it gives base 30secs + additional 30 seconds per 0.1 attribute value.
 
 ### MobEffects  
 **Appetite**  
-at level 1 : Allows the player to eat even when they're full 
+at level 1 : Allows the player to eat even when they're full  
 at level 2+: when the player gains any other positive food effects, adds x0.5(configurable) of the original duration per (level-1)   
 
 ## Configuration
-**crouch_bonemeal_chance** 
-The range and cooldown (in ticks, when holding crouch key) is configurable in the config.
+**crouch_bonemeal_chance**  
+The range and cooldown (in ticks, when holding crouch key) is configurable in the config.  
 The affected blocks are defined by the tag `#farmers_attributes:crouch_bonemeal_whitelist`.
 
-**zesty_culinary** 
-The duration of the Appetite given per level is configurable in the configs.
+**zesty_culinary**  
+The duration of the Appetite given per level is configurable in the configs.  
 The blocks that gives the effect when placed are defined by the tag `#farmers_attributes:delicious_smelling_blocks`
 
 ## Integration
-**Farmer's Delight**  
-zesty_culinary works with skillets, cooking pots.
-The skillet will apply the Appetite effect in an a radius like the campfire.
+### Farmer's Delight
+**zesty_culinary**  
+works with skillets, cooking pots.  
+The skillet will apply the Appetite effect in an a radius like the campfire.  
 The food blocks from Farmer's Delight (e.g. stuffed pumpkin) are included in the delicious_smelling_blocks tag by default.
 
 ## Installation
