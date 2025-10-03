@@ -48,7 +48,7 @@ The blocks that gives the effect when placed are defined by the tag `#farmers_at
 ## Integration
 ### Farmer's Delight
 **zesty_culinary**  
-works with skillets, cooking pots.  
+Works with skillets and cooking pots.  
 The skillet will apply the Appetite effect in an a radius like the campfire.  
 The food blocks from Farmer's Delight (e.g. stuffed pumpkin) are included in the delicious_smelling_blocks tag by default.
 
