@@ -3,10 +3,14 @@
   "package": "medi.makiba.farmers_attributes.mixin",
   "plugin": "medi.makiba.farmers_attributes.mixin.MixinPlugin",
   "compatibilityLevel": "JAVA_21",
+  "mixinextras": {
+    "minVersion": "0.5.0"
+  },
   "mixins": [
     "LivingEntityMixin",
     "PlayerMixin",
     "CampFireBlockEntityMixin",
+    "FarmBlockMixin",
     "farmersdelight.CookingPotBlockMixin",
     "farmersdelight.CookingPotResultSlotMixin",
     "farmersdelight.CookingPotMenuMixin",

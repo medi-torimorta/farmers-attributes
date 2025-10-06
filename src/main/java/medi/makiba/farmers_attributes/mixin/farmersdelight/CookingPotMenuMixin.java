@@ -44,13 +44,12 @@ public class CookingPotMenuMixin {
      */
     @WrapOperation(method = "quickMoveStack", at = @At(value = "INVOKE", target = "Lvectorwing/farmersdelight/common/block/entity/container/CookingPotMenu;moveItemStackTo(Lnet/minecraft/world/item/ItemStack;IIZ)Z", ordinal = 0))
     private boolean onQuickMoveStack(CookingPotMenu instance, ItemStack slotStack, int startIndex, int endIndex, boolean reverseDirection, Operation<Boolean> original, @Local(ordinal = 0) ItemStack slotStackCopy, @Local Player playerIn) {
-        System.out.println("Injected quickMoveStack");
         boolean result = original.call(instance, slotStack, startIndex, endIndex, reverseDirection);
         if (result){
             int amount = slotStackCopy.getCount() - slotStack.getCount();
             if (amount > 0) {
                 if (playerIn instanceof ServerPlayer serverPlayer) {
-                    ZestyCulinary.applyAppetiteOnCrafting(serverPlayer);
+                    ZestyCulinary.applyAppetiteOnCrafting(serverPlayer, slotStackCopy);
                 }
             }
         }

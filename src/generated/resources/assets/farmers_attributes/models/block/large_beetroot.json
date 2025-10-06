@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "farmers_attributes:block/large_beetroot_bottom",
+    "particle": "farmers_attributes:block/large_beetroot_side",
+    "side": "farmers_attributes:block/large_beetroot_side",
+    "top": "farmers_attributes:block/large_beetroot_top"
+  }
+}

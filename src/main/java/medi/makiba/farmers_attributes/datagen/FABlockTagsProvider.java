@@ -18,10 +18,8 @@ public class FABlockTagsProvider extends BlockTagsProvider {
             super(output, lookupProvider, FarmersAttributes.MODID, existingFileHelper);
     }
 
-    // Add your tag entries here.
     @Override
     protected void addTags(HolderLookup.Provider lookupProvider) {
-    // Create a tag builder for our tag. This could also be e.g. a vanilla or NeoForge tag.
         tag(FATags.Blocks.CROUCH_BONEMEAL_WHITELIST)
             .addTag(BlockTags.CROPS)
             .addTag(BlockTags.SAPLINGS);
@@ -34,5 +32,6 @@ public class FABlockTagsProvider extends BlockTagsProvider {
             .addOptional(ResourceLocation.fromNamespaceAndPath(FarmersDelight.MODID, "honey_glazed_ham_block"))
             .addOptional(ResourceLocation.fromNamespaceAndPath(FarmersDelight.MODID, "shepherds_pie_block"))
             .addOptional(ResourceLocation.fromNamespaceAndPath(FarmersDelight.MODID, "rice_roll_medley_block"));
+        
     }
 }

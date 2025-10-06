@@ -3,8 +3,11 @@
   "attributes.farmers_attributes.anti_farmland_trampling.desc": "農地を踏み荒らしません。",
   "attributes.farmers_attributes.crouch_bonemeal_chance": "しゃがみ骨粉効果確率",
   "attributes.farmers_attributes.crouch_bonemeal_chance.desc": "しゃがみを連打または長押しすると確率で周囲の植物に骨粉効果を適用します。",
+  "attributes.farmers_attributes.green_thumb": "グリーンサム",
+  "attributes.farmers_attributes.green_thumb.desc": "作物を大きく成長させたり、ドロップ量を増やしたりする確率。",
   "attributes.farmers_attributes.zesty_culinary": "料理上手",
   "attributes.farmers_attributes.zesty_culinary.desc": "食べ物を調理すると食欲エフェクトを付与します。焚き火調理などの一部の調理法や、食べ物をブロックとして設置した際には周囲のプレイヤーにもエフェクトを付与します。",
+  "block.farmers_attributes.large_beetroot": "大きなビートルート",
   "config.farmers_attributes.appetite_effect_duration_multiplier": "食欲エフェクトによる持続時間倍率",
   "config.farmers_attributes.crouch_bonemeal_cooldown": "しゃがみ長押し時の骨粉効果適用間隔",
   "config.farmers_attributes.crouch_bonemeal_range": "しゃがみで骨粉効果を適用する範囲",
@@ -15,5 +18,7 @@
   "farmers_attributes.configuration.section.farmers_attributes.common.toml": "Farmer's Attributes",
   "farmers_attributes.configuration.section.farmers_attributes.common.toml.title": "Farmer's Attributes",
   "farmers_attributes.configuration.title": "設定",
-  "tag.farmers_attributes.crouch_bonemeal_whitelist": "しゃがみで成長促進可能"
+  "tag.farmers_attributes.crouch_bonemeal_whitelist": "しゃがみで成長促進可能",
+  "tag.farmers_attributes.delicious_smelling_blocks": "美味しそうな匂いのするブロック",
+  "tag.farmers_attributes.source_foods": "原材料の食べ物"
 }

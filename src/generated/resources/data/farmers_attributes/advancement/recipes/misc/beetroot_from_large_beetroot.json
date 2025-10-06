@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_large_beetroot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "farmers_attributes:large_beetroot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "farmers_attributes:beetroot_from_large_beetroot"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_large_beetroot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "farmers_attributes:beetroot_from_large_beetroot"
+    ]
+  }
+}

@@ -10,6 +10,7 @@ import com.llamalad7.mixinextras.sugar.Local;
 import medi.makiba.farmers_attributes.attribute.ZestyCulinary;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import vectorwing.farmersdelight.common.item.SkilletItem;
 
 @Mixin(SkilletItem.class)
@@ -25,12 +26,12 @@ public class SkilletItemMixin {
             Optional<RecipeHolder<CampfireCookingRecipe>> cookingRecipe = getCookingRecipe(cookingStack, level);
             cookingRecipe.ifPresent((recipe) -> {
                ItemStack resultStack = ((CampfireCookingRecipe)recipe.value()).assemble(new SingleRecipeInput(cookingStack), level.registryAccess());
+               //inject here
                if (!player.getInventory().add(resultStack)) {
                   player.drop(resultStack, false);
                }
 
                if (player instanceof ServerPlayer) {
-                  //inject here
                   CriteriaTriggers.CONSUME_ITEM.trigger((ServerPlayer)player, stack);
                }
 
@@ -44,8 +45,10 @@ public class SkilletItemMixin {
    }
      */
 
-   @Inject(method = "lambda$finishUsingItem$0", at = @At(value = "INVOKE", target = "Lnet/minecraft/advancements/critereon/ConsumeItemTrigger;trigger(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/world/item/ItemStack;)V"))
-   private static void checkForAppetiteAoe(CallbackInfo ci, @Local Player player) {
-      ZestyCulinary.applyAppetiteAoeOnCooking((ServerPlayer) player);
+   @Inject(method = "lambda$finishUsingItem$0", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/world/item/crafting/CampfireCookingRecipe;assemble(Lnet/minecraft/world/item/crafting/SingleRecipeInput;Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/world/item/ItemStack;"))
+   private static void checkForAppetiteAoe(CallbackInfo ci, @Local Player player, @Local(ordinal = 2) ItemStack stack) {
+      if (player instanceof ServerPlayer serverPlayer) {
+         ZestyCulinary.applyAppetiteAoeOnCooking(serverPlayer, stack);
+      }
    }
 }

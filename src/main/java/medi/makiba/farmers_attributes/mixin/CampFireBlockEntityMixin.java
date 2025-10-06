@@ -10,6 +10,7 @@ import com.llamalad7.mixinextras.sugar.Local;
 
 import medi.makiba.farmers_attributes.attribute.ZestyCulinary;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.CampfireBlockEntity;
 
@@ -51,8 +52,8 @@ public class CampFireBlockEntityMixin {
         }
     */
     @Inject(method = "Lnet/minecraft/world/level/block/entity/CampfireBlockEntity;cookTick(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/CampfireBlockEntity;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/Containers;dropItemStack(Lnet/minecraft/world/level/Level;DDDLnet/minecraft/world/item/ItemStack;)V"))
-    private static void checkForAppetiteAoe(CallbackInfo ci, @Local int i, @Local CampfireBlockEntity cbe) {
-        ZestyCulinary.checkAoeUponDrop(cbe, i, true);
+    private static void checkForAppetiteAoe(CallbackInfo ci, @Local int i, @Local CampfireBlockEntity cbe, @Local(ordinal = 1) ItemStack itemstack1) {
+        ZestyCulinary.checkAoeUponDrop(cbe, i, true, itemstack1);
     }
 
 

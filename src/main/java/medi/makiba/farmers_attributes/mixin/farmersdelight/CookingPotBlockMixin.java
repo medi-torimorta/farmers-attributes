@@ -9,6 +9,7 @@ import com.llamalad7.mixinextras.sugar.Local;
 import medi.makiba.farmers_attributes.attribute.ZestyCulinary;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 
 import org.spongepowered.asm.mixin.injection.At;
 
@@ -46,9 +47,9 @@ public class CookingPotBlockMixin {
    }
      */
    @Inject(method = "useItemOn", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;playSound(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V"))
-   private void applyEffect(CallbackInfoReturnable<Void> cir, @Local Player player) {
+   private void applyEffect(CallbackInfoReturnable<Void> cir, @Local Player player, @Local(ordinal = 1) ItemStack servingStack) {
       if (player instanceof ServerPlayer serverPlayer) {
-         ZestyCulinary.applyAppetiteOnCrafting(serverPlayer);
+         ZestyCulinary.applyAppetiteOnCrafting(serverPlayer, servingStack);
       }
    }
 }

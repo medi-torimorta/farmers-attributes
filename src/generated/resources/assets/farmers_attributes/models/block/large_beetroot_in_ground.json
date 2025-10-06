@@ -1,0 +1,10 @@
+{
+  "parent": "farmers_attributes:block/large_crops_in_ground",
+  "textures": {
+    "bottom": "farmers_attributes:block/large_beetroot_bottom",
+    "leaves": "farmers_attributes:block/large_beetroot_leaves",
+    "particle": "farmers_attributes:block/large_beetroot_side",
+    "side": "farmers_attributes:block/large_beetroot_side",
+    "top": "farmers_attributes:block/large_beetroot_top"
+  }
+}

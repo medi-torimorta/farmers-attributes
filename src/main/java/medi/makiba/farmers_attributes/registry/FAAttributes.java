@@ -31,4 +31,9 @@ public class FAAttributes {
         127
     ));
 
+    public static final Holder<Attribute> GREEN_THUMB = ATTRIBUTES.register("green_thumb", () -> new PercentageAttribute(
+        "attributes.farmers_attributes.green_thumb",
+        0, 0, 1
+    ));
+
 }

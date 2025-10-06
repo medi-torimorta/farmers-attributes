@@ -1,5 +1,9 @@
 package medi.makiba.farmers_attributes;
 
+import java.util.List;
+
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 // An example config class. This is not required, but it's a good idea to have one to keep your config organized.
@@ -11,6 +15,7 @@ public class FAConfig {
     public static final ModConfigSpec.IntValue CROUCH_BONEMEAL_COOLDOWN;
     public static final ModConfigSpec.IntValue ZESTY_AOE_RADIUS_COOK;
     public static final ModConfigSpec.IntValue ZESTY_AOE_RADIUS_PLACE;
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> GREEN_THUMB_BLACKLIST;
     public static final ModConfigSpec.DoubleValue APPETITE_EFFECT_DURATION_MULTIPLIER;
 
     static final ModConfigSpec SPEC;
@@ -37,7 +42,12 @@ public class FAConfig {
             .comment("Radius in blocks for the appetite effect AoE from food placement")
             .translation("config.farmers_attributes.zesty_aoe_radius_place")
             .defineInRange("zestyAoeRadiusPlace", 5, 0, 32);
-
+        
+        GREEN_THUMB_BLACKLIST = BUILDER
+            .comment("Blocks that are blacklisted from the Green Thumb attribute. Use registry names, e.g. minecraft:wheat")
+            .translation("config.farmers_attributes.green_thumb_blacklist")
+            .defineListAllowEmpty("green_thumb_blacklist", List.of("minecraft:torchflower_crop"), () -> "", FAConfig::validateBlockName);
+            
 
         BUILDER.pop();
         BUILDER.push("effects");
@@ -49,5 +59,9 @@ public class FAConfig {
         
         BUILDER.pop();
         SPEC = BUILDER.build();
+
+    }
+    private static boolean validateBlockName(final Object obj) {
+        return obj instanceof String blockName && BuiltInRegistries.BLOCK.containsKey(ResourceLocation.parse(blockName));
     }
 }

@@ -8,6 +8,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import com.llamalad7.mixinextras.sugar.Local;
+
 import medi.makiba.farmers_attributes.attribute.ZestyCulinary;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -39,9 +41,9 @@ public class SkilletBlockEntityMixin {
    }
      */
    @Inject(method = "cookAndOutputItems", at = @At(value = "INVOKE", target = "Lvectorwing/farmersdelight/common/utility/ItemUtils;spawnItemEntity(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/item/ItemStack;DDDDDD)V"))
-   public void applyAoeEffect(ItemStack cookingStack, Level level, CallbackInfo ci) {
+   public void applyAoeEffect(ItemStack cookingStack, Level level, CallbackInfo ci, @Local(ordinal = 1) ItemStack resultStack) {
       SkilletBlockEntity self = (SkilletBlockEntity)(Object)this;
-      ZestyCulinary.checkAoeUponDrop(self, 0, this.inventory.getStackInSlot(0).getCount() <= 1);
+      ZestyCulinary.checkAoeUponDrop(self, 0, this.inventory.getStackInSlot(0).getCount() <= 1, resultStack);
    }
 
    /*

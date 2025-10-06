@@ -3,8 +3,11 @@
   "attributes.farmers_attributes.anti_farmland_trampling.desc": "Prevents farmland trampling.",
   "attributes.farmers_attributes.crouch_bonemeal_chance": "Crouch Bonemeal Chance",
   "attributes.farmers_attributes.crouch_bonemeal_chance.desc": "Chance to apply bonemeal effect when spamming or holding crouch.",
+  "attributes.farmers_attributes.green_thumb": "Green Thumb",
+  "attributes.farmers_attributes.green_thumb.desc": "Chance to grow crops into large variants, or increase their drop.",
   "attributes.farmers_attributes.zesty_culinary": "Zesty Culinary",
   "attributes.farmers_attributes.zesty_culinary.desc": "Applies the Appetite effect when cooking food. When cooking with campfires and some other cooking blocks, or placing food as blocks, applies the effect to nearby players as well.",
+  "block.farmers_attributes.large_beetroot": "Large Beetroot",
   "config.farmers_attributes.appetite_effect_duration_multiplier": "Appetite Effect Duration Multiplier",
   "config.farmers_attributes.crouch_bonemeal_cooldown": "Bonemeal Effect Cooldown when holding crouch key",
   "config.farmers_attributes.crouch_bonemeal_range": "Crouch Bonemeal Range",
@@ -15,5 +18,7 @@
   "farmers_attributes.configuration.section.farmers_attributes.common.toml": "Farmer's Attributes",
   "farmers_attributes.configuration.section.farmers_attributes.common.toml.title": "Farmer's Attributes",
   "farmers_attributes.configuration.title": "Configs",
-  "tag.farmers_attributes.crouch_bonemeal_whitelist": "Can be bonemealed by crouching"
+  "tag.farmers_attributes.crouch_bonemeal_whitelist": "Can be bonemealed by crouching",
+  "tag.farmers_attributes.delicious_smelling_blocks": "Delicious Smelling Blocks",
+  "tag.farmers_attributes.source_foods": "Source Foods"
 }

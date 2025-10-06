@@ -19,7 +19,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
@@ -32,7 +32,10 @@ public class ZestyCulinary {
         return new Tuple<>(amplifier, duration);
     }
 
-    public static void applyAppetiteOnCrafting(ServerPlayer player) {
+    public static void applyAppetiteOnCrafting(ServerPlayer player, ItemStack resultItem) {
+        if (!isCraftedFood(resultItem)) {
+            return;
+        }
         double attribute_value = player.getAttributeValue(FAAttributes.ZESTY_CULINARY);
         if (attribute_value >= 1) {
             Tuple<Integer, Integer> values = getValues(attribute_value);
@@ -42,11 +45,11 @@ public class ZestyCulinary {
         }
     }
 
-    public static void applyAppetiteAoeOnPlacement(ServerPlayer player, ServerLevelAccessor level, BlockPos pos, BlockState state) {
-        if (!state.is(FATags.Blocks.DELICIOUS_SMELLING_BLOCKS)) {
+    public static void applyAppetiteAoeOnPlacement(LivingEntity entity, ServerLevel level, BlockPos pos, BlockState state) {
+        if (!state.is(FATags.Blocks.DELICIOUS_SMELLING_BLOCKS) || !entity.getAttributes().hasAttribute(FAAttributes.ZESTY_CULINARY)) {
             return;
         }
-        double attribute_value = player.getAttributeValue(FAAttributes.ZESTY_CULINARY);
+        double attribute_value = entity.getAttributeValue(FAAttributes.ZESTY_CULINARY);
         if (attribute_value >= 1) {
             Tuple<Integer, Integer> values = getValues(attribute_value);
             int amplifier = values.getA();
@@ -56,7 +59,10 @@ public class ZestyCulinary {
         }
     }
 
-    public static void applyAppetiteAoeOnCooking(ServerPlayer player) {
+    public static void applyAppetiteAoeOnCooking(ServerPlayer player, ItemStack resultItem) {
+        if (!isCraftedFood(resultItem)) {
+            return;
+        }
         double attribute_value = player.getAttributeValue(FAAttributes.ZESTY_CULINARY);
         if (attribute_value >= 1) {
             Tuple<Integer, Integer> values = getValues(attribute_value);
@@ -69,13 +75,13 @@ public class ZestyCulinary {
         }
     }
 
-    public static void checkAoeUponDrop(BlockEntity blockEntity, int slot, boolean lastInSlot){
+    public static void checkAoeUponDrop(BlockEntity blockEntity, int slot, boolean lastInSlot, ItemStack resultItem){
         if (blockEntity.getLevel() instanceof ServerLevel serverLevel && blockEntity.hasData(FAAttachmentTypes.ZESTY_CULINARY)) {
             BlockPos pos = blockEntity.getBlockPos();
             ZestyCulinaryRecord data = blockEntity.getData(FAAttachmentTypes.ZESTY_CULINARY);
             double attributeValue = data.getAttValueForSlot(slot);
-            if (attributeValue >= 0) {
-                ZestyCulinary.applyAppetiteAoeOnDrop(serverLevel, pos, attributeValue);
+            if (attributeValue >= 0 && isCraftedFood(resultItem)) {
+                ZestyCulinary.applyAppetiteAoeOnDrop(serverLevel, pos, attributeValue);   
             }
             if (lastInSlot){
                 ZestyCulinaryRecord dataAfter = data.updatedWith(slot, 0);
@@ -88,7 +94,7 @@ public class ZestyCulinary {
         }
     }
 
-    public static void applyAppetiteAoeOnDrop(ServerLevelAccessor level, BlockPos blockpos, double attributeValue) {
+    private static void applyAppetiteAoeOnDrop(ServerLevel level, BlockPos blockpos, double attributeValue) {
         if (attributeValue >= 1) {
             int range = FAConfig.ZESTY_AOE_RADIUS_COOK.get();
             Tuple <Integer, Integer> values = getValues(attributeValue);
@@ -98,7 +104,7 @@ public class ZestyCulinary {
         }
     }
 
-    public static void applyAppetiteAoe(ServerLevelAccessor level, BlockPos blockpos, int range, int duration,
+    public static void applyAppetiteAoe(ServerLevel level, BlockPos blockpos, int range, int duration,
             int amplifier) {
         List<Player> list = Lists.newArrayList();
         for (Player player : level.players()) {
@@ -156,5 +162,9 @@ public class ZestyCulinary {
         be.setData(FAAttachmentTypes.ZESTY_CULINARY, new_record);
     }
 
+    @SuppressWarnings("null")
+    public static boolean isCraftedFood(ItemStack itemStack) {
+        return itemStack.getItem().getFoodProperties(itemStack, null) != null && !itemStack.is(FATags.Items.SOURCE_FOODS);
+    }
 
 }

@@ -1,0 +1,13 @@
+{
+  "values": [
+    "#c:crops",
+    "#c:seeds",
+    "#c:foods/fruit",
+    "#c:foods/vegetable",
+    "#c:foods/raw_meat",
+    "#c:foods/raw_fish",
+    "minecraft:rotten_flesh",
+    "minecraft:spider_eye",
+    "minecraft:honey_bottle"
+  ]
+}

@@ -35,8 +35,8 @@ public class CookingPotResultSlotMixin {
 
     @Inject(method = "checkTakeAchievements", at = @At("TAIL"))
     private void applyEffect(ItemStack stack, CallbackInfo ci) {
-        if (this.player instanceof ServerPlayer serverPlayer && stack.getFoodProperties(serverPlayer) != null) {
-            ZestyCulinary.applyAppetiteOnCrafting(serverPlayer);
+        if (this.player instanceof ServerPlayer serverPlayer) {
+            ZestyCulinary.applyAppetiteOnCrafting(serverPlayer, stack);
         }
     }
 }
