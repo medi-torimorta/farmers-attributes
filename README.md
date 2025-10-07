@@ -43,6 +43,8 @@ at level 1 : Allows the player to eat even when they're full
 at level 2+: when the player gains any other positive food effects, adds x0.5(configurable) of the original duration per (level-1)   
 
 ## Configuration
+The following can be configured in the farmers_attributes-server.toml, unless otherwise specified.
+
 **anti_farmland_trampling**  
 Can be enabled for all players, ignoring their attribute values.  
 
@@ -59,11 +61,11 @@ The duration of the Appetite given per level is configurable.
 The items that are not treated as "cooking" results (does not give effect) are defined by the tag: `#farmers_attributes:source_foods`  
 The blocks that gives the effect when placed are defined by the tag: `#farmers_attributes:delicious_smelling_blocks`  
 
-**green_thumb**
+**green_thumb**  
 Affected crops and possible large variants can be blacklisted.  
 Drop multiplier for non-large crops is configurable.
 
-**Appetite Effect**
+**Appetite Effect**  
 The multiplier for extended food effect duration is configurable.
 
 ## Integration

@@ -53,8 +53,6 @@ public class GreenThumb {
             && FAConfig.GREEN_THUMB_LARGE_CROPS_ALLOWED.get().contains(BuiltInRegistries.BLOCK.getKey(block).toString())
             && level.setBlockAndUpdate(pos, largeCrops.get(block))) {
             removeData(level, pos);
-        } else {
-            System.out.println("Failed to set large crop state: " + FAConfig.GREEN_THUMB_LARGE_CROPS_ALLOWED.get() + block);
         }
     }
 
