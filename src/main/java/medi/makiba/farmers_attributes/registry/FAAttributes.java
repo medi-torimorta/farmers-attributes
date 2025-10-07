@@ -19,6 +19,11 @@ public class FAAttributes {
         false
     ));
 
+    public static final Holder<Attribute> EASY_HARVEST = ATTRIBUTES.register("easy_harvest", () -> new BooleanAttribute(
+        "attributes.farmers_attributes.easy_harvest",
+        false
+    ));
+
     public static final Holder<Attribute> CROUCH_BONEMEAL_CHANCE = ATTRIBUTES.register("crouch_bonemeal_chance", () -> new PercentageAttribute(
         "attributes.farmers_attributes.crouch_bonemeal_chance",
         0, 0, 1

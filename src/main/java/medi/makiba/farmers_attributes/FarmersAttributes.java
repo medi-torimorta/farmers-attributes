@@ -31,7 +31,7 @@ public class FarmersAttributes {
         FAAttributes.ATTRIBUTES.register(modEventBus);
         FAAttachmentTypes.ATTACHMENT_TYPES.register(modEventBus);
         FAMobEffects.MOB_EFFECTS.register(modEventBus);
-        modContainer.registerConfig(ModConfig.Type.COMMON, FAConfig.SPEC);
+        modContainer.registerConfig(ModConfig.Type.SERVER, FAConfig.SPEC);
     }
 
 }

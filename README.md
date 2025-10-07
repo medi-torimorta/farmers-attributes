@@ -18,6 +18,9 @@ ex.
 **anti_farmland_trampling**  
 If True (non-zero), prevents farmlands from being trampled by the player.  
 
+**easy_harvest**  
+If True (non-zero), allows for harvesting crops by right clicking, sending the drops directly to the player's inventory. Uses seeds from the drop content or the player's inventory for replanting.  
+
 **crouch_bonemeal_chance**  
 Chance (0.0-1.0) for the bonemeal effect to be applied to nearby crops and saplings when the player spams or holds crouch.  
 
@@ -31,8 +34,8 @@ Attribute value = `(effect level)` + `(durationSeconds/300-0.1)`
 ex. Attribute of `1.0` will give Appetite I for 30 seconds, `3.23` III for 99 seconds, `2.9` II for 5min.  
 Basically, it gives base 30secs + additional 30 seconds per 0.1 attribute value.  
 
-**green_thumb**
-Chance (0.0-1.0) for crops planted by the player to become their Large variants upon reaching max growth state, or give double drops upon harvesting. The large variants can only appear when grown naturally (e.g. no bonemeal)
+**green_thumb**  
+Chance (0.0-1.0) for crops planted by the player to become their Large variants upon reaching max growth state, or give double drops upon harvesting if a large variant is unavailable. The large variants can only appear when grown naturally (e.g. no bonemeal)
 
 ### MobEffects  
 **Appetite**  
@@ -40,14 +43,28 @@ at level 1 : Allows the player to eat even when they're full
 at level 2+: when the player gains any other positive food effects, adds x0.5(configurable) of the original duration per (level-1)   
 
 ## Configuration
+**anti_farmland_trampling**  
+Can be enabled for all players, ignoring their attribute values.  
+
+**easy_harvest**  
+Can be enabled for all players, ignoring their attribute values.  
+Crops can be blacklisted.  
+
 **crouch_bonemeal_chance**  
-The range and cooldown (in ticks, when holding crouch key) is configurable in the configs.  
+The range and cooldown (in ticks, when holding crouch key) is configurable.  
 The affected blocks are defined by the tag `#farmers_attributes:crouch_bonemeal_whitelist`.
 
 **zesty_culinary**  
-The duration of the Appetite given per level is configurable in the configs.  
+The duration of the Appetite given per level is configurable.  
 The items that are not treated as "cooking" results (does not give effect) are defined by the tag: `#farmers_attributes:source_foods`  
 The blocks that gives the effect when placed are defined by the tag: `#farmers_attributes:delicious_smelling_blocks`  
+
+**green_thumb**
+Affected crops and possible large variants can be blacklisted.  
+Drop multiplier for non-large crops is configurable.
+
+**Appetite Effect**
+The multiplier for extended food effect duration is configurable.
 
 ## Integration
 ### Farmer's Delight
@@ -63,4 +80,4 @@ Needed on both server and client.
 The mod is available on neoforge 1.21.1, and will not be ported to other versions unless I personally need it be.
 
 ## Credits
-Large crop textures by [@Siina__Makoto](https://x.com/Siina__Makoto)
+Large BeetRoot crop textures by [@Siina__Makoto](https://x.com/Siina__Makoto)

@@ -11,17 +11,36 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 public class FAConfig {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
+    public static final ModConfigSpec.BooleanValue FORCE_ANTI_FARMLAND_TRAMPLING;
+    public static final ModConfigSpec.BooleanValue FORCE_EASY_HARVEST;
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> EASY_HARVEST_BLACKLIST;
     public static final ModConfigSpec.IntValue CROUCH_BONEMEAL_RANGE;
     public static final ModConfigSpec.IntValue CROUCH_BONEMEAL_COOLDOWN;
     public static final ModConfigSpec.IntValue ZESTY_AOE_RADIUS_COOK;
     public static final ModConfigSpec.IntValue ZESTY_AOE_RADIUS_PLACE;
     public static final ModConfigSpec.ConfigValue<List<? extends String>> GREEN_THUMB_BLACKLIST;
     public static final ModConfigSpec.DoubleValue APPETITE_EFFECT_DURATION_MULTIPLIER;
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> GREEN_THUMB_LARGE_CROPS_ALLOWED;
+    public static final ModConfigSpec.IntValue GREEN_THUMB_DROP_MULTIPLIER;
 
     static final ModConfigSpec SPEC;
 
     static {
         BUILDER.push("attributes");
+        FORCE_ANTI_FARMLAND_TRAMPLING = BUILDER
+            .comment("Force Anti Farmland Trampling to always be active for all players, ignoring the attribute level.")
+            .translation("config.farmers_attributes.force_anti_farmland_trampling")
+            .define("forceAntiFarmlandTrampling", false);
+        
+        FORCE_EASY_HARVEST = BUILDER
+            .comment("Force Easy Harvest to always be active for all players, ignoring the attribute level.")
+            .translation("config.farmers_attributes.force_easy_harvest")
+            .define("forceEasyHarvest", false);
+        
+        EASY_HARVEST_BLACKLIST = BUILDER
+            .comment("Blocks that are blacklisted from the Easy Harvesting. Use registry names, e.g. minecraft:wheat")
+            .translation("config.farmers_attributes.easy_harvest_blacklist")
+            .defineListAllowEmpty("easy_harvest_blacklist", List.of("minecraft:torchflower_crop"), () -> "", FAConfig::validateBlockName);
 
         CROUCH_BONEMEAL_RANGE = BUILDER
             .comment("Crouch Bonemeal range in blocks")
@@ -44,11 +63,20 @@ public class FAConfig {
             .defineInRange("zestyAoeRadiusPlace", 5, 0, 32);
         
         GREEN_THUMB_BLACKLIST = BUILDER
-            .comment("Blocks that are blacklisted from the Green Thumb attribute. Use registry names, e.g. minecraft:wheat")
+            .comment("Blocks that are blacklisted from the Green Thumb attribute, for both large crops and drop increase. Use registry names, e.g. minecraft:wheat")
             .translation("config.farmers_attributes.green_thumb_blacklist")
             .defineListAllowEmpty("green_thumb_blacklist", List.of("minecraft:torchflower_crop"), () -> "", FAConfig::validateBlockName);
-            
+        
+        GREEN_THUMB_LARGE_CROPS_ALLOWED = BUILDER
+            .comment("Blocks that are allowed to be converted into large crops by the Green Thumb attribute. Includes all available large crops by default, remove as needed.")
+            .translation("config.farmers_attributes.green_thumb_large_crops_allowed")
+            .defineListAllowEmpty("green_thumb_large_crops_allowed", List.of("minecraft:beetroots"), () -> "", FAConfig::validateBlockName);
 
+        GREEN_THUMB_DROP_MULTIPLIER = BUILDER
+            .comment("Used for crops not listed above. Multiplier for the crop drops which are affected by Green Thumb. set 1 to disable.")
+            .translation("config.farmers_attributes.green_thumb_drop_multiplier")
+            .defineInRange("green_thumb_drop_multiplier", 2, 1, 10);
+        
         BUILDER.pop();
         BUILDER.push("effects");
 

@@ -12,17 +12,26 @@ public class FALangProviderEnUs extends FALangProviderBase {
     protected void addTranslations() {
         // Configs
         addConfigLabels("Configs", "Farmer's Attributes", "Farmer's Attributes");
+        add("farmers_attributes.configuration.attributes", "Attributes");
+        add("farmers_attributes.configuration.effects", "Effects");
         addConfig("crouch_bonemeal_range", "Crouch Bonemeal Range");
         addConfig("crouch_bonemeal_cooldown", "Bonemeal Effect Cooldown when holding crouch key");
         addConfig("appetite_effect_duration_multiplier", "Appetite Effect Duration Multiplier");
         addConfig("zesty_aoe_radius_cook", "Appetite Effect AoE Radius from Campfire Cooking");
         addConfig("zesty_aoe_radius_place", "Appetite Effect AoE Radius from Food Placement");
+        addConfig("green_thumb_blacklist", "Green Thumb Blacklisted Crops");
+        addConfig("green_thumb_large_crops_allowed", "Green Thumb Allowed Large Crops");
+        addConfig("green_thumb_drop_multiplier", "Green Thumb Drop Multiplier for regular sized crops");
+        addConfig("force_anti_farmland_trampling", "Force Anti Farmland Trampling for everyone");
+        addConfig("force_easy_harvest", "Force Easy Harvest for everyone");
+        addConfig("easy_harvest_blacklist", "Easy Harvest Blacklisted Crops");
         
         // Attributes
         addAttribute("anti_farmland_trampling", "Anti Farmland Trampling", "Prevents farmland trampling.");
         addAttribute("crouch_bonemeal_chance", "Crouch Bonemeal Chance", "Chance to apply bonemeal effect when spamming or holding crouch.");
         addAttribute("zesty_culinary", "Zesty Culinary", "Applies the Appetite effect when cooking food. When cooking with campfires and some other cooking blocks, or placing food as blocks, applies the effect to nearby players as well.");
         addAttribute("green_thumb", "Green Thumb", "Chance to grow crops into large variants, or increase their drop.");
+        addAttribute("easy_harvest", "Easy Harvest", "Allows quick harvesting by right-clicking fully grown crops, and replant if seeds are available.");
 
         // Effects
         addEffect("appetite", "Appetite", "Never get full, and extends the duration of beneficial effects when eating food at higher levels.");

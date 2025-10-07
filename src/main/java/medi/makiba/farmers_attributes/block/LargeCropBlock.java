@@ -23,7 +23,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.FarmBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -42,13 +41,15 @@ public class LargeCropBlock extends Block{
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
     public static final BooleanProperty IN_GROUND = BooleanProperty.create("in_ground");
     private static final VoxelShape SHAPE_IN_GROUND = Block.box(0.0D, -12.0D, 0.0D, 16.0D, 4.0D, 16.0D);
+    public BlockState originalCropState;
 
-    public LargeCropBlock() {
+    public LargeCropBlock(BlockState originalCropState) {
         super(BlockBehaviour.Properties.of()
             .destroyTime(1.0f)
             .explosionResistance(1.0f)
             .sound(SoundType.WOOD)
         );
+        this.originalCropState = originalCropState;
         registerDefaultState(stateDefinition.any()
             .setValue(FACING, Direction.UP)
             .setValue(IN_GROUND, false)
@@ -126,7 +127,7 @@ public class LargeCropBlock extends Block{
         }
     }
 
-    public static void unEarth(@Nullable Entity entity, BlockState state, Level level, BlockPos pos) {
+    private static void unEarth(@Nullable Entity entity, BlockState state, Level level, BlockPos pos) {
         level.playSound(entity, pos, SoundEvents.CROP_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
         if (!level.isClientSide) {
             BlockState blockstate = pushEntitiesUp(state, state.setValue(IN_GROUND, false), level, pos);
@@ -135,7 +136,7 @@ public class LargeCropBlock extends Block{
         }
     }
 
-    public static void earth(@Nullable Entity entity, BlockState state, Level level, BlockPos pos) {
+    private static void earth(@Nullable Entity entity, BlockState state, Level level, BlockPos pos) {
         level.playSound(entity, pos, SoundEvents.CROP_PLANTED, SoundSource.BLOCKS, 1.0F, 1.0F);
         if (!level.isClientSide) {
             BlockState blockstate = getEarthedState(state);
@@ -146,5 +147,9 @@ public class LargeCropBlock extends Block{
 
     public static BlockState getEarthedState(BlockState state) {
         return state.setValue(IN_GROUND, true).setValue(FACING, Direction.UP);
+    }
+
+    public static boolean inGround(BlockState state) {
+        return state.getValue(IN_GROUND);
     }
 }

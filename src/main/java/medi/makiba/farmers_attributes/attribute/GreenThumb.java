@@ -13,14 +13,17 @@ import medi.makiba.farmers_attributes.registry.FAAttachmentTypes;
 import medi.makiba.farmers_attributes.registry.FAAttributes;
 import medi.makiba.farmers_attributes.registry.FABlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkAccess;
+import net.neoforged.neoforge.common.Tags;
 
 public class GreenThumb {
     public static void checkAndAddData(LivingEntity entity, ServerLevel level, BlockPos pos) {
@@ -38,8 +41,7 @@ public class GreenThumb {
     }
 
     private static final Map<Block, BlockState> largeCrops = Map.of(
-        Blocks.BEETROOTS, LargeCropBlock.getEarthedState(FABlocks.LARGE_BEETROOT.get().defaultBlockState())
-    );
+            Blocks.BEETROOTS, LargeCropBlock.getEarthedState(FABlocks.LARGE_BEETROOT.get().defaultBlockState()));
 
     // called on CropGrowEvent.Post
     public static void checkAndApplyGreenThumbOnGrowth(ServerLevel level, BlockPos pos, BlockState state) {
@@ -47,37 +49,75 @@ public class GreenThumb {
             return;
         }
         Block block = state.getBlock();
-        if (largeCrops.containsKey(block) && level.setBlockAndUpdate(pos, largeCrops.get(block))) {
+        if (largeCrops.containsKey(block)
+            && FAConfig.GREEN_THUMB_LARGE_CROPS_ALLOWED.get().contains(BuiltInRegistries.BLOCK.getKey(block).toString())
+            && level.setBlockAndUpdate(pos, largeCrops.get(block))) {
             removeData(level, pos);
+        } else {
+            System.out.println("Failed to set large crop state: " + FAConfig.GREEN_THUMB_LARGE_CROPS_ALLOWED.get() + block);
         }
     }
 
-    public static void checkAndApplyGreenThumbOnHarvest(ServerLevel level, BlockPos pos, BlockState state, List<ItemEntity> drops) {
+    public static void checkAndApplyGreenThumbOnHarvest(ServerLevel level, BlockPos pos, BlockState state,
+            List<ItemEntity> drops) {
         if (!checkShouldApplyGreenThumbResult(level, pos, state)) {
             return;
         }
-        drops.addAll(drops);
+        applyDropMultiplier(drops, level);
         removeData(level, pos);
     }
 
+    private static void applyDropMultiplier(List<ItemEntity> drops, ServerLevel level) {
+        int multiplier = FAConfig.GREEN_THUMB_DROP_MULTIPLIER.get();
+        if (multiplier > 1) {
+            List<ItemEntity> extraDrops = List.of();
+            for (ItemEntity drop : drops) {
+                if (drop.getItem().is(Tags.Items.SEEDS)) {
+                    continue;
+                }
+                int newCount = drop.getItem().getCount() * multiplier;
+                int maxStackSize = drop.getItem().getMaxStackSize();
+                if (newCount > maxStackSize) {
+                    drop.getItem().setCount(maxStackSize);
+                    newCount -= maxStackSize;
+                    while (newCount > 0) {
+                        int count = Math.min(newCount, maxStackSize);
+                        newCount -= count;
+                        ItemStack newStack = drop.getItem().copy();
+                        newStack.setCount(count);
+                        ItemEntity extraDrop = new ItemEntity(
+                                level,
+                                drop.getX(),
+                                drop.getY(),
+                                drop.getZ(),
+                                newStack);
+                        extraDrops.add(extraDrop);
+                    }
+                    drops.addAll(extraDrops);
+                } else {
+                    drop.getItem().setCount(newCount);
+                }
+            }
+        }
+    }
+
     // on chunk load
-    public static void removeDataIfNonApplicable(ChunkAccess chunk) {
+    public static void removeIrrelevantData(ChunkAccess chunk) {
         if (chunk.hasData(FAAttachmentTypes.GREEN_THUMB)) {
             Set<BlockPos> data = chunk.getData(FAAttachmentTypes.GREEN_THUMB);
             data.removeIf(pos -> {
                 BlockState state = chunk.getBlockState(pos);
-                return state.isAir() || !(state.getBlock() instanceof CropBlock) || FAConfig.GREEN_THUMB_BLACKLIST.get().contains(state.getBlock().toString());
+                return state.isAir() || !(state.getBlock() instanceof CropBlock)
+                        || FAConfig.GREEN_THUMB_BLACKLIST.get().contains(BuiltInRegistries.BLOCK.getKey(state.getBlock()).toString());
             });
         }
     }
 
     private static boolean checkShouldApplyGreenThumbResult(ServerLevel level, BlockPos pos, BlockState state) {
-        System.out.println("Checking Green Thumb effect at " + pos + " with state " + state);
         if (!(state.getBlock() instanceof CropBlock cropBlock) || !cropBlock.isMaxAge(state)
-                || FAConfig.GREEN_THUMB_BLACKLIST.get().contains(state.getBlock().toString())) {
+                || FAConfig.GREEN_THUMB_BLACKLIST.get().contains(BuiltInRegistries.BLOCK.getKey(state.getBlock()).toString())) {
             return false;
         }
-        System.out.println("Green Thumb effect is applicable at " + pos);
         if (!level.getChunk(pos).hasData(FAAttachmentTypes.GREEN_THUMB)
                 || !level.getChunk(pos).getData(FAAttachmentTypes.GREEN_THUMB).contains(pos)) {
             return false;
@@ -101,10 +141,10 @@ public class GreenThumb {
         chunk.setData(FAAttachmentTypes.GREEN_THUMB, data);
     }
 
-    public static void removeData(ServerLevel level, BlockPos pos) {
+    public static boolean removeData(ServerLevel level, BlockPos pos) {
         ChunkAccess chunk = level.getChunk(pos);
         if (!chunk.hasData(FAAttachmentTypes.GREEN_THUMB)) {
-            return;
+            return false;
         }
         Set<BlockPos> data = chunk.getData(FAAttachmentTypes.GREEN_THUMB);
         if (data.contains(pos)) {
@@ -114,6 +154,9 @@ public class GreenThumb {
             } else {
                 chunk.setData(FAAttachmentTypes.GREEN_THUMB, data);
             }
+            return true;
+        } else {
+            return false;
         }
     }
 
