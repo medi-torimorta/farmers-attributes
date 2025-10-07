@@ -8,7 +8,8 @@
 This mod aims to enhance farming experience in minecraft by adding multiple player attributes related to farming and cooking.
 
 ## Usage
-It is recommended to use this with other mods that make use of the attributes, as the mod itself doesn't do anything other than adding the attributes to the game.  
+Farmland protection and right-click harvesting/replanting can be turned on the feature for all players in the config.
+The other features are best used in conbination with other mods that make use of the attributes, as this mod doesn't add a way to increase the player attributes by itself.  
 You can also use the commands to set your attributes.  
 ex.  
 `/attribute @s farmers_attributes:crouch_bonemeal_chance base set 0.5`
