@@ -1,5 +1,6 @@
 # Farmer's Attributes
 [![CurseForge Downloads](https://img.shields.io/curseforge/dt/1355713?style=flat&logo=CurseForge&logoColor=F16436&label=CurseForge&color=F16436)](https://www.curseforge.com/minecraft/mc-mods/farmers-attributes)
+[![ModRinth Downloads](https://img.shields.io/modrinth/dt/farmers_attributes?style=flat&logo=modrinth&logoColor=%2300AF5C&label=Modrinth&color=%2300AF5C)](https://modrinth.com/mod/farmers_attributes)
 [![Minecraft Versions](https://img.shields.io/badge/MC-1.21.1-green?style=flat&logo=minecraft&logoColor=white)](https://www.minecraft.net/ja-jp/about-minecraft)
 [![Server Side](https://img.shields.io/badge/Side-Server%26Client-orange?style=flat)](#)
 [![License](https://img.shields.io/github/license/medi-torimorta/farmers-attributes?style=flat&color=purple)](https://github.com/medi-torimorta/farmers-attributes/?tab=MIT-1-ov-file#)
