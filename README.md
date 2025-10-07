@@ -8,7 +8,7 @@
 This mod aims to enhance farming experience in minecraft by adding multiple player attributes related to farming and cooking.
 
 ## Usage
-Farmland protection and right-click harvesting/replanting can be turned on for all players in the config.
+Farmland protection and right-click harvesting/replanting can be turned on for all players in the config.  
 The other features are best used in conbination with other mods that make use of the attributes, as this mod doesn't add a way to increase the player attributes by itself.  
 You can also use the commands to set your attributes.  
 ex.  
