@@ -22,6 +22,7 @@ If True (non-zero), prevents farmlands from being trampled by the player.
 
 **easy_harvest**  
 If True (non-zero), allows for harvesting crops by right clicking, sending the drops directly to the player's inventory. Uses seeds from the drop content or the player's inventory for replanting.  
+Also works on kelps and sugarcanes (and similar modded plants) leaving the bottom block. This harvests connected blocks as well, only searching upwards.  
 
 **crouch_bonemeal_chance**  
 Chance (0.0-1.0) for the bonemeal effect to be applied to nearby crops and saplings when the player spams or holds crouch.  
@@ -53,6 +54,7 @@ Can be enabled for all players, ignoring their attribute values.
 **easy_harvest**  
 Can be enabled for all players, ignoring their attribute values.  
 Crops can be blacklisted.  
+Whole-plant harvesting for kelp/sugarcane type plants can be disabled.  
 
 **crouch_bonemeal_chance**  
 The range and cooldown (in ticks, when holding crouch key) is configurable.  
@@ -77,6 +79,10 @@ Works with skillets and cooking pots.
 The skillet will apply the Appetite effect in an a radius like the campfire.  
 The food blocks from Farmer's Delight (e.g. stuffed pumpkin) are included in the delicious_smelling_blocks tag by default.  
 
+### Pufferfish's Skills
+**easy_harvest**  
+Harvested crops count as "broken" blocks in experience source contexts.  
+
 ## Installation
 Needed on both server and client.
 
@@ -84,4 +90,4 @@ Needed on both server and client.
 The mod is available on neoforge 1.21.1, and will not be ported to other versions unless I personally need it be.
 
 ## Credits
-Large BeetRoot crop textures by [@Siina__Makoto](https://x.com/Siina__Makoto)
+Large crop textures by [@Siina__Makoto](https://x.com/Siina__Makoto)
