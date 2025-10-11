@@ -1,0 +1,33 @@
+{
+  "variants": {
+    "facing=down,in_ground=false": {
+      "model": "farmers_attributes:block/large_carrot",
+      "x": 180
+    },
+    "facing=east,in_ground=false": {
+      "model": "farmers_attributes:block/large_carrot",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,in_ground=false": {
+      "model": "farmers_attributes:block/large_carrot",
+      "x": 90
+    },
+    "facing=south,in_ground=false": {
+      "model": "farmers_attributes:block/large_carrot",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up,in_ground=false": {
+      "model": "farmers_attributes:block/large_carrot"
+    },
+    "facing=west,in_ground=false": {
+      "model": "farmers_attributes:block/large_carrot",
+      "x": 90,
+      "y": 270
+    },
+    "in_ground=true": {
+      "model": "farmers_attributes:block/large_carrot_in_ground"
+    }
+  }
+}

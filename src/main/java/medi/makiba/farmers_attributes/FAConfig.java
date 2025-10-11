@@ -14,6 +14,7 @@ public class FAConfig {
     public static final ModConfigSpec.BooleanValue FORCE_ANTI_FARMLAND_TRAMPLING;
     public static final ModConfigSpec.BooleanValue FORCE_EASY_HARVEST;
     public static final ModConfigSpec.ConfigValue<List<? extends String>> EASY_HARVEST_BLACKLIST;
+    public static final ModConfigSpec.BooleanValue EASY_HARVEST_WHOLE_PLANT;
     public static final ModConfigSpec.IntValue CROUCH_BONEMEAL_RANGE;
     public static final ModConfigSpec.IntValue CROUCH_BONEMEAL_COOLDOWN;
     public static final ModConfigSpec.IntValue ZESTY_AOE_RADIUS_COOK;
@@ -27,11 +28,15 @@ public class FAConfig {
 
     static {
         BUILDER.push("attributes");
+
+        BUILDER.push("anti_farmland_trampling");
         FORCE_ANTI_FARMLAND_TRAMPLING = BUILDER
             .comment("Force Anti Farmland Trampling to always be active for all players, ignoring the attribute level.")
             .translation("config.farmers_attributes.force_anti_farmland_trampling")
             .define("forceAntiFarmlandTrampling", false);
-        
+        BUILDER.pop();
+
+        BUILDER.push("easy_harvest");
         FORCE_EASY_HARVEST = BUILDER
             .comment("Force Easy Harvest to always be active for all players, ignoring the attribute level.")
             .translation("config.farmers_attributes.force_easy_harvest")
@@ -41,7 +46,14 @@ public class FAConfig {
             .comment("Blocks that are blacklisted from the Easy Harvesting. Use registry names, e.g. minecraft:wheat")
             .translation("config.farmers_attributes.easy_harvest_blacklist")
             .defineListAllowEmpty("easy_harvest_blacklist", List.of("minecraft:torchflower_crop"), () -> "", FAConfig::validateBlockName);
+        
+        EASY_HARVEST_WHOLE_PLANT = BUILDER
+            .comment("If true, Easy Harvest will harvest the whole plant above the targeted block. Works for sugar canes and kelp-likes.")
+            .translation("config.farmers_attributes.easy_harvest_whole_plant")
+            .define("easyHarvestWholePlant", true);
+        BUILDER.pop();
 
+        BUILDER.push("crouch_bonemeal_chance");
         CROUCH_BONEMEAL_RANGE = BUILDER
             .comment("Crouch Bonemeal range in blocks")
             .translation("config.farmers_attributes.crouch_bonemeal_range")
@@ -52,6 +64,9 @@ public class FAConfig {
             .translation("config.farmers_attributes.crouch_bonemeal_cooldown")
             .defineInRange("crouchBonemealCooldown", 20, 0, 600);
         
+        BUILDER.pop();
+
+        BUILDER.push("zesty_culinary");
         ZESTY_AOE_RADIUS_COOK = BUILDER
             .comment("Radius in blocks for the appetite effect AoE from campfire cooking")
             .translation("config.farmers_attributes.zesty_aoe_radius_cook")
@@ -62,6 +77,9 @@ public class FAConfig {
             .translation("config.farmers_attributes.zesty_aoe_radius_place")
             .defineInRange("zestyAoeRadiusPlace", 5, 0, 32);
         
+        BUILDER.pop();
+
+        BUILDER.push("green_thumb");
         GREEN_THUMB_BLACKLIST = BUILDER
             .comment("Blocks that are blacklisted from the Green Thumb attribute, for both large crops and drop increase. Use registry names, e.g. minecraft:wheat")
             .translation("config.farmers_attributes.green_thumb_blacklist")
@@ -70,13 +88,14 @@ public class FAConfig {
         GREEN_THUMB_LARGE_CROPS_ALLOWED = BUILDER
             .comment("Blocks that are allowed to be converted into large crops by the Green Thumb attribute. Includes all available large crops by default, remove as needed.")
             .translation("config.farmers_attributes.green_thumb_large_crops_allowed")
-            .defineListAllowEmpty("green_thumb_large_crops_allowed", List.of("minecraft:beetroots"), () -> "", FAConfig::validateBlockName);
+            .defineListAllowEmpty("green_thumb_large_crops_allowed", List.of("minecraft:beetroots", "minecraft:carrots"), () -> "", FAConfig::validateBlockName);
 
         GREEN_THUMB_DROP_MULTIPLIER = BUILDER
             .comment("Used for crops not listed above. Multiplier for the crop drops which are affected by Green Thumb. set 1 to disable.")
             .translation("config.farmers_attributes.green_thumb_drop_multiplier")
             .defineInRange("green_thumb_drop_multiplier", 2, 1, 10);
-        
+        BUILDER.pop();
+
         BUILDER.pop();
         BUILDER.push("effects");
 

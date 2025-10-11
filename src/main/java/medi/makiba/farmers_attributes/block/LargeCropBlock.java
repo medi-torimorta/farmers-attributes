@@ -2,9 +2,7 @@ package medi.makiba.farmers_attributes.block;
 
 import javax.annotation.Nullable;
 
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
+import medi.makiba.farmers_attributes.attribute.EasyHarvest;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -70,6 +68,10 @@ public class LargeCropBlock extends Block{
                 if (!level.isClientSide) {
                     heldStack.hurtAndBreak(1, player, Player.getSlotForHand(hand));
                 }
+                return ItemInteractionResult.sidedSuccess(level.isClientSide);
+            }
+        }else if (state.getValue(IN_GROUND)){
+            if (EasyHarvest.tryHarvestLargeCrop(level, pos, player, heldStack)){
                 return ItemInteractionResult.sidedSuccess(level.isClientSide);
             }
         }

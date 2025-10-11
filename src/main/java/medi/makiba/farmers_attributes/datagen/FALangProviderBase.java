@@ -12,10 +12,23 @@ public abstract class FALangProviderBase extends LanguageProvider{
         this.modid = FarmersAttributes.MODID;
     }
 
-    protected void addConfigLabels(String configs, String sectionName, String sectionTitle) {
-        add(this.modid + ".configuration.title", configs);
-        add(this.modid + ".configuration.section." + this.modid + ".common.toml", sectionName);
-        add(this.modid + ".configuration.section." + this.modid + ".common.toml.title", sectionTitle);
+
+    protected void addConfigTitle(String name) {
+        add(this.modid + ".configuration.title", name);
+    }
+
+    protected void addConfigLabelsCommon(String sectionName, String sectionTitle) {
+        add(this.modid + ".configuration.section." + this.modid.replace("_", ".")  + ".common.toml", sectionName);
+        add(this.modid + ".configuration.section." + this.modid.replace("_", ".") + ".common.toml.title", sectionTitle);
+    }
+
+    protected void addConfigLabelsServer(String sectionName, String sectionTitle) {
+        add(this.modid + ".configuration.section." + this.modid.replace("_", ".") + ".server.toml", sectionName);
+        add(this.modid + ".configuration.section." + this.modid.replace("_", ".") + ".server.toml.title", sectionTitle);
+    }
+
+    protected void addConfigGroup(String configName, String name) {
+        add(this.modid + ".configuration." + configName, name);
     }
 
     protected void addConfig(String configName, String name) {

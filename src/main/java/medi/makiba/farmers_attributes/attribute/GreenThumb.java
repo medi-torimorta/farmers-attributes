@@ -41,7 +41,9 @@ public class GreenThumb {
     }
 
     private static final Map<Block, BlockState> largeCrops = Map.of(
-            Blocks.BEETROOTS, LargeCropBlock.getEarthedState(FABlocks.LARGE_BEETROOT.get().defaultBlockState()));
+        Blocks.BEETROOTS, LargeCropBlock.getEarthedState(FABlocks.LARGE_BEETROOT.get().defaultBlockState()),
+        Blocks.CARROTS, LargeCropBlock.getEarthedState(FABlocks.LARGE_CARROT.get().defaultBlockState())
+    );
 
     // called on CropGrowEvent.Post
     public static void checkAndApplyGreenThumbOnGrowth(ServerLevel level, BlockPos pos, BlockState state) {

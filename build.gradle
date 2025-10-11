@@ -21,13 +21,16 @@ repositories {
     exclusiveContent {
         forRepository {
             maven {
-                url "https://cursemaven.com"
+                url = "https://cursemaven.com"
             }
         }
         filter {
             includeGroup "curse.maven"
         }
     }
+    maven {
+		url = uri("https://maven.puffish.net") //pufferfish's skills
+	}
 }
 base {
     archivesName = mod_id
@@ -127,7 +130,12 @@ dependencies {
     // We add the full version to localRuntime, not runtimeOnly, so that we do not publish a dependency on it
     // localRuntime "mezz.jei:jei-${mc_version}-neoforge:${jei_version}"
 
-    implementation "curse.maven:farmersdelight-398521:6917256" // FarmersDelight
+    compileOnly "curse.maven:farmersdelight-398521:6917256" // FarmersDelight
+    compileOnly "net.puffish:skillsmod:0.16.8+1.21:neoforge" //pufferfish's skills
+}
+
+jar {
+    exclude ".cache/**"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
@@ -145,6 +153,7 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             mod_authors            : mod_authors,
             mod_description        : mod_description,
             farmersdelight_version_range: farmersdelight_version_range,
+            puffish_skills_version_range: puffish_skills_version_range,
     ]
     inputs.properties replaceProperties
     expand replaceProperties
@@ -166,7 +175,7 @@ publishing {
     }
     repositories {
         maven {
-            url "file://${project.projectDir}/repo"
+            url = "file://${project.projectDir}/repo"
         }
     }
 }

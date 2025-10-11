@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_large_carrot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "farmers_attributes:large_carrot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "farmers_attributes:carrot_from_large_carrot"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_large_carrot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "farmers_attributes:carrot_from_large_carrot"
+    ]
+  }
+}

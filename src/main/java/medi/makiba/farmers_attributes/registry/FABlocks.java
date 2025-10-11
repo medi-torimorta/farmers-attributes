@@ -14,4 +14,7 @@ public class FABlocks {
     public static final DeferredBlock<Block> LARGE_BEETROOT = BLOCKS.register(
         "large_beetroot", 
         () -> new LargeCropBlock(((CropBlock)Blocks.BEETROOTS).getStateForAge(0)));
+    public static final DeferredBlock<Block> LARGE_CARROT = BLOCKS.register(
+        "large_carrot", 
+        () -> new LargeCropBlock(((CropBlock)Blocks.CARROTS).getStateForAge(0)));
 }

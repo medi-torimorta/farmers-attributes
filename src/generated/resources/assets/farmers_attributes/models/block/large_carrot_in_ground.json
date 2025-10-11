@@ -1,0 +1,10 @@
+{
+  "parent": "farmers_attributes:block/large_crops_in_ground",
+  "textures": {
+    "bottom": "farmers_attributes:block/large_carrot_bottom",
+    "leaves": "farmers_attributes:block/large_carrot_leaves",
+    "particle": "farmers_attributes:block/large_carrot_side",
+    "side": "farmers_attributes:block/large_carrot_side",
+    "top": "farmers_attributes:block/large_carrot_top"
+  }
+}

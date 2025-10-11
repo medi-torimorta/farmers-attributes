@@ -11,20 +11,33 @@ public class FALangProviderEnUs extends FALangProviderBase {
     @Override
     protected void addTranslations() {
         // Configs
-        addConfigLabels("Configs", "Farmer's Attributes", "Farmer's Attributes");
-        add("farmers_attributes.configuration.attributes", "Attributes");
-        add("farmers_attributes.configuration.effects", "Effects");
-        addConfig("crouch_bonemeal_range", "Crouch Bonemeal Range");
-        addConfig("crouch_bonemeal_cooldown", "Bonemeal Effect Cooldown when holding crouch key");
-        addConfig("appetite_effect_duration_multiplier", "Appetite Effect Duration Multiplier");
+        addConfigTitle("Configs");
+        addConfigLabelsServer("Farmer's Attributes", "Farmer's Attributes");
+        addConfigGroup("attributes", "Attributes");
+        addConfigGroup("effects", "Effects");
+
+        addConfigGroup("crouch_bonemeal_chance", "Crouch Bonemeal Chance");
+        addConfig("crouch_bonemeal_range", "Range");
+        addConfig("crouch_bonemeal_cooldown", "Cooldown when holding crouch key");
+
+        addConfig("appetite_effect_duration_multiplier", "Duration Multiplier");
+
+        addConfigGroup("zesty_culinary", "Zesty Culinary");
         addConfig("zesty_aoe_radius_cook", "Appetite Effect AoE Radius from Campfire Cooking");
         addConfig("zesty_aoe_radius_place", "Appetite Effect AoE Radius from Food Placement");
-        addConfig("green_thumb_blacklist", "Green Thumb Blacklisted Crops");
-        addConfig("green_thumb_large_crops_allowed", "Green Thumb Allowed Large Crops");
-        addConfig("green_thumb_drop_multiplier", "Green Thumb Drop Multiplier for regular sized crops");
-        addConfig("force_anti_farmland_trampling", "Force Anti Farmland Trampling for everyone");
-        addConfig("force_easy_harvest", "Force Easy Harvest for everyone");
-        addConfig("easy_harvest_blacklist", "Easy Harvest Blacklisted Crops");
+
+        addConfigGroup("green_thumb", "Green Thumb");
+        addConfig("green_thumb_blacklist", "Blacklisted Crops");
+        addConfig("green_thumb_large_crops_allowed", "Allowed Large Crops");
+        addConfig("green_thumb_drop_multiplier", "Drop Multiplier for regular sized crops");
+        
+        addConfigGroup("anti_farmland_trampling", "Anti Farmland Trampling");
+        addConfig("force_anti_farmland_trampling", "Force enabled for everyone");
+
+        addConfigGroup("easy_harvest", "Easy Harvest");
+        addConfig("force_easy_harvest", "Force enabled for everyone");
+        addConfig("easy_harvest_blacklist", "Blacklisted Crops");
+        addConfig("easy_harvest_whole_plant", "Harvest the whole plant for kelps and sugar canes.");
         
         // Attributes
         addAttribute("anti_farmland_trampling", "Anti Farmland Trampling", "Prevents farmland trampling.");
@@ -42,5 +55,6 @@ public class FALangProviderEnUs extends FALangProviderBase {
 
         // Blocks
         addBlock(FABlocks.LARGE_BEETROOT, "Large Beetroot");
+        addBlock(FABlocks.LARGE_CARROT, "Large Carrot");
     }
 }

@@ -23,6 +23,7 @@ public class FABlockStateProvider extends BlockStateProvider{
     protected void registerStatesAndModels() {
         
         largeCropBlock(FABlocks.LARGE_BEETROOT);
+        largeCropBlock(FABlocks.LARGE_CARROT);
     }
 
     private void largeCropBlock(DeferredBlock<?> block) {

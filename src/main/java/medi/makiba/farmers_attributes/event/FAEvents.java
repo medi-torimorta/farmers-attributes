@@ -1,6 +1,5 @@
 package medi.makiba.farmers_attributes.event;
 
-import medi.makiba.farmers_attributes.FAConfig;
 import medi.makiba.farmers_attributes.FarmersAttributes;
 import medi.makiba.farmers_attributes.attribute.AntiFarmlandTrampling;
 import medi.makiba.farmers_attributes.attribute.CrouchBoneMeal;
@@ -10,7 +9,6 @@ import medi.makiba.farmers_attributes.attribute.ZestyCulinary;
 import medi.makiba.farmers_attributes.registry.FAAttributes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -20,7 +18,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.common.util.TriState;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent.ItemCraftedEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent.ItemSmeltedEvent;
@@ -111,10 +108,10 @@ public class FAEvents {
 
     @SubscribeEvent
     public static void checkEasyHarvestOnRightClick(RightClickBlock event) {
-        if(EasyHarvest.tryHarvest(event.getLevel(), event.getPos(), event.getEntity())){
+        if(EasyHarvest.tryHarvest(event.getLevel(), event.getPos(), event.getEntity(), event.getFace(), event.getItemStack())){
             event.setCanceled(true);
-            event.setCancellationResult(InteractionResult.SUCCESS);
-        }        
+            event.setCancellationResult(InteractionResult.sidedSuccess(event.getSide().isClient()));
+        }
     }
 
     @SubscribeEvent

@@ -25,6 +25,7 @@ public class FARecipeProvider extends RecipeProvider{
    @Override
 	protected void buildRecipes(RecipeOutput output) {
         largeCropUnpacking(output, FAItems.LARGE_BEETROOT.get(), Items.BEETROOT, 6);
+        largeCropUnpacking(output, FAItems.LARGE_CARROT.get(), Items.CARROT, 9);
     }
 
     public static void largeCropUnpacking(RecipeOutput output, Item largeCropItem, Item result, int count) {

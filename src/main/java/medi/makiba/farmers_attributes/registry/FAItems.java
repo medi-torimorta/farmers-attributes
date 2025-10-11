@@ -13,4 +13,6 @@ public class FAItems {
 
     public static final Supplier<BlockItem> LARGE_BEETROOT = ITEMS.registerSimpleBlockItem(FABlocks.LARGE_BEETROOT, new Item.Properties()
         .food((new FoodProperties.Builder()).nutrition(6).saturationModifier(0.6F).build()));
+    public static final Supplier<BlockItem> LARGE_CARROT = ITEMS.registerSimpleBlockItem(FABlocks.LARGE_CARROT, new Item.Properties()
+        .food((new FoodProperties.Builder()).nutrition(12).saturationModifier(0.6F).build()));
 }
