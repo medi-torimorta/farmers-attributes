@@ -38,7 +38,9 @@ ex. Attribute of `1.0` will give Appetite I for 30 seconds, `3.23` III for 99 se
 Basically, it gives base 30secs + additional 30 seconds per 0.1 attribute value.  
 
 **green_thumb**  
-Chance (0.0-1.0) for crops planted by the player to become their Large variants upon reaching max growth state, or give double drops upon harvesting if a large variant is unavailable. The large variants can only appear when grown naturally (e.g. no bonemeal)
+Chance (0.0-1.0) for crops planted by the player to become their Large variants upon reaching max growth state, or give double drops upon harvesting if a large variant is unavailable.  
+Large variants can only appear when grown naturally (no bonemeal)  
+Currently, large carrots and beetroots are implemented.
 
 ### MobEffects  
 **Appetite**  
