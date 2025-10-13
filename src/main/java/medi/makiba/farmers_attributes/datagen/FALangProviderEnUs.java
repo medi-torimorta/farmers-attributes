@@ -38,6 +38,9 @@ public class FALangProviderEnUs extends FALangProviderBase {
         addConfig("force_easy_harvest", "Force enabled for everyone");
         addConfig("easy_harvest_blacklist", "Blacklisted Crops");
         addConfig("easy_harvest_whole_plant", "Harvest the whole plant for kelps and sugar canes.");
+
+        addConfigGroup("short_order_cooking", "Short Order Cooking");
+        addConfig("short_order_cooking_range", "Range in blocks for the attribute to affect cooking stations");
         
         // Attributes
         addAttribute("anti_farmland_trampling", "Anti Farmland Trampling", "Prevents farmland trampling.");

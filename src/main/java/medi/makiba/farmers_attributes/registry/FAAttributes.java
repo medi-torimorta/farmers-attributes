@@ -41,4 +41,13 @@ public class FAAttributes {
         0, 0, 1
     ));
 
+    public static final Holder<Attribute> SHORT_ORDER_COOKING = ATTRIBUTES.register("short_order_cooking", () -> new RangedAttribute(
+        "attributes.farmers_attributes.short_order_cooking",
+        1,
+        0,
+        1024
+    ));
+
+    //TODO: weapon and armor bonus related to chief
+
 }

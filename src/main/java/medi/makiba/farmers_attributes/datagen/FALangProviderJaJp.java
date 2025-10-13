@@ -40,6 +40,9 @@ public class FALangProviderJaJp extends FALangProviderBase {
         addConfig("easy_harvest_blacklist", "効果を受けない作物");
         addConfig("easy_harvest_whole_plant", "対象の作物の上に伸びている部分もまとめて収穫する");
 
+        addConfigGroup("short_order_cooking", "料理時間短縮");
+        addConfig("short_order_cooking_range", "調理ブロックに効果を及ぼす範囲");
+
         // Attributes
         addAttribute("anti_farmland_trampling", "農地踏み荒らし防止", "農地を踏み荒らしません。");
         addAttribute("crouch_bonemeal_chance", "しゃがみ骨粉効果", "しゃがみを連打または長押しすると確率で周囲の植物に骨粉効果を適用します。");

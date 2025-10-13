@@ -1,16 +1,21 @@
 package medi.makiba.farmers_attributes.mixin.farmersdelight;
 
+import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.At.Shift;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 
+import medi.makiba.farmers_attributes.attribute.ShortOrderCooking;
 import medi.makiba.farmers_attributes.attribute.ZestyCulinary;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -22,16 +27,17 @@ public class SkilletBlockEntityMixin {
    @Shadow @Final
    private ItemStackHandler inventory;
     /*
-     * apply Appetite AoE effect if the blockentity has ZESTY_CULINARY
+     * 1. apply Appetite AoE effect if the blockentity has ZESTY_CULINARY
+     * 2. modify cookTime increment based on nearby players' Short Order Cooking attribute
      * base method:
      *private void cookAndOutputItems(ItemStack cookingStack, Level level) {
-      ++this.cookingTime;
+      ++this.cookingTime; // modify here ( 2 )
       if (this.cookingTime >= this.cookingTimeTotal) {
          Optional<RecipeHolder<CampfireCookingRecipe>> recipe = this.getMatchingRecipe(cookingStack);
          if (recipe.isPresent()) {
             ItemStack resultStack = ((CampfireCookingRecipe)((RecipeHolder)recipe.get()).value()).assemble(new SingleRecipeInput(cookingStack), level.registryAccess());
             Direction direction = ((Direction)this.getBlockState().getValue(SkilletBlock.FACING)).getClockWise();
-            //inject here
+            //inject here ( 1)
             ItemUtils.spawnItemEntity(level, resultStack.copy(), (double)this.worldPosition.getX() + 0.5, (double)this.worldPosition.getY() + 0.3, (double)this.worldPosition.getZ() + 0.5, (double)((float)direction.getStepX() * 0.08F), 0.25, (double)((float)direction.getStepZ() * 0.08F));
             this.cookingTime = 0;
             this.inventory.extractItem(0, 1, false);
@@ -44,6 +50,15 @@ public class SkilletBlockEntityMixin {
    public void applyAoeEffect(ItemStack cookingStack, Level level, CallbackInfo ci, @Local(ordinal = 1) ItemStack resultStack) {
       SkilletBlockEntity self = (SkilletBlockEntity)(Object)this;
       ZestyCulinary.checkAoeUponDrop(self, 0, this.inventory.getStackInSlot(0).getCount() <= 1, resultStack);
+   }
+
+   @ModifyExpressionValue(method = "cookAndOutputItems", at = @At(value = "FIELD", target = "Lvectorwing/farmersdelight/common/block/entity/SkilletBlockEntity;cookingTime:I", opcode = Opcodes.GETFIELD, ordinal = 0, shift = Shift.AFTER))
+   private int modifyCookTimeIncrement(int original, ItemStack cookingStack, Level level) {
+      if (!(level instanceof ServerLevel serverLevel)) {
+         return original;
+      }
+      SkilletBlockEntity self = (SkilletBlockEntity)(Object)this;
+      return ShortOrderCooking.getModifiedCookTimeIncrement(serverLevel, self, original);
    }
 
    /*
@@ -93,4 +108,5 @@ public class SkilletBlockEntityMixin {
    private void removeZestyRecord(CallbackInfoReturnable<ItemStack> cir) {
          ZestyCulinary.addData(0, 0,(SkilletBlockEntity)(Object)this);
    }
+   
 }

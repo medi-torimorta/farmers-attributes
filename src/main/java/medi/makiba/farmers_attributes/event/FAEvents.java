@@ -48,6 +48,9 @@ public class FAEvents {
         event.add(
             EntityType.PLAYER,
             FAAttributes.GREEN_THUMB);
+        event.add(
+            EntityType.PLAYER,
+            FAAttributes.SHORT_ORDER_COOKING);
     }
 
     @SubscribeEvent

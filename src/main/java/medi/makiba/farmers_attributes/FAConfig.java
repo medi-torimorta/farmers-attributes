@@ -23,6 +23,7 @@ public class FAConfig {
     public static final ModConfigSpec.DoubleValue APPETITE_EFFECT_DURATION_MULTIPLIER;
     public static final ModConfigSpec.ConfigValue<List<? extends String>> GREEN_THUMB_LARGE_CROPS_ALLOWED;
     public static final ModConfigSpec.IntValue GREEN_THUMB_DROP_MULTIPLIER;
+    public static final ModConfigSpec.IntValue SHORT_ORDER_COOKING_RANGE;
 
     static final ModConfigSpec SPEC;
 
@@ -94,6 +95,13 @@ public class FAConfig {
             .comment("Used for crops not listed above. Multiplier for the crop drops which are affected by Green Thumb. set 1 to disable.")
             .translation("config.farmers_attributes.green_thumb_drop_multiplier")
             .defineInRange("green_thumb_drop_multiplier", 2, 1, 10);
+        BUILDER.pop();
+
+        BUILDER.push("short_order_cooking");
+        SHORT_ORDER_COOKING_RANGE = BUILDER
+            .comment("Range in blocks for the Short Order Cooking attribute to affect cooking stations")
+            .translation("config.farmers_attributes.short_order_cooking_range")
+            .defineInRange("shortOrderCookingRange", 2, 0, 16);
         BUILDER.pop();
 
         BUILDER.pop();

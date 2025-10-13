@@ -5,10 +5,13 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 
+import medi.makiba.farmers_attributes.attribute.ShortOrderCooking;
 import medi.makiba.farmers_attributes.attribute.ZestyCulinary;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import vectorwing.farmersdelight.common.item.SkilletItem;
@@ -50,5 +53,31 @@ public class SkilletItemMixin {
       if (player instanceof ServerPlayer serverPlayer) {
          ZestyCulinary.applyAppetiteAoeOnCooking(serverPlayer, stack);
       }
+   }
+
+
+   /*
+    * modify skillet use duration based on Short Order Cooking attribute
+    *
+    * base method:
+    * public int getUseDuration(ItemStack stack, LivingEntity entity) {
+         Optional<Holder.Reference<Enchantment>> fireAspect = entity.level().registryAccess().lookupOrThrow(Registries.ENCHANTMENT).get(Enchantments.FIRE_ASPECT);
+         if (fireAspect.isEmpty()) {
+            return 0;
+         } else {
+            Objects.requireNonNull(stack);
+            int fireAspectLevel = (Integer)fireAspect.map(stack::getEnchantmentLevel).orElse(0);
+            int cookingTime = (Integer)stack.getOrDefault(ModDataComponents.COOKING_TIME_LENGTH, 0);
+            return SkilletBlock.getSkilletCookingTime(cookingTime, fireAspectLevel);// modify return value here
+         }
+      }
+    */
+   
+   @ModifyReturnValue(method = "getUseDuration", at = @At("RETURN"))
+   private int modifyUseDuration(int original, ItemStack stack, LivingEntity entity) {
+      if (!(entity instanceof ServerPlayer serverPlayer)) {
+         return original;
+      }
+      return ShortOrderCooking.getModifiedCookingTimeDuration(serverPlayer, original);
    }
 }
