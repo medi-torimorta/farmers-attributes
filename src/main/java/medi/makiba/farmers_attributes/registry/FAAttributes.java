@@ -1,7 +1,5 @@
 package medi.makiba.farmers_attributes.registry;
 
-import org.checkerframework.checker.units.qual.t;
-
 import medi.makiba.farmers_attributes.FarmersAttributes;
 
 import net.minecraft.core.Holder;

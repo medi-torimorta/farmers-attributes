@@ -89,10 +89,10 @@ The range to apply the speed modifier is configurable.
 Farmer's weapons are defined by the tag: `#farmers_attributes:farmers_weapon`  
 
 **farmers_armor**  
-Farmer's weapons are defined by the tag: `#farmers_attributes:farmers_armor` 
+Farmer's weapons are defined by the tag: `#farmers_attributes:farmers_armor`  
 
 **Appetite Effect**  
-The multiplier for extended food effect duration is configurable.
+The multiplier for extended food effect duration is configurable.  
 
 ## Integration
 ### Farmer's Delight
@@ -103,17 +103,20 @@ The food blocks from Farmer's Delight (e.g. stuffed pumpkin) are included in the
 
 **short_order_cooking**  
 Works on cooking pots and skillets.  
-Values lower than 0.001 doesn't work on hand-held skillet cooking and will be handled as 0.001.
+Values lower than 0.001 doesn't work on hand-held skillet cooking and will be handled as 0.001.  
+
+**farmers_weapon**  
+Skillets and knifes are indluded in the farmers_weapon tag by default.  
 
 ### Pufferfish's Skills
 **easy_harvest**  
 Harvested crops count as "broken" blocks in experience source contexts.  
 
 ## Installation
-Needed on both server and client.
+Needed on both server and client.  
 
 ## Versions
-The mod is available on neoforge 1.21.1, and will not be ported to other versions unless I personally need it be.
+The mod is available on neoforge 1.21.1, and will not be ported to other versions unless I personally need it be.  
 
 ## Credits
 Large crop textures by [@Siina__Makoto](https://x.com/Siina__Makoto)

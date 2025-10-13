@@ -8,11 +8,8 @@ import medi.makiba.farmers_attributes.registry.FATags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextColor;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.client.event.RenderTooltipEvent.Color;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
 public class FarmersWeaponAndArmor {
