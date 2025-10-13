@@ -9,6 +9,7 @@ import medi.makiba.farmers_attributes.registry.FAAttributes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.phys.AABB;
@@ -16,14 +17,16 @@ import net.minecraft.world.phys.AABB;
 public class ShortOrderCooking {
     private static double getCookingSpeedMultiplier(ServerLevel level, BlockPos pos){
         int range = FAConfig.SHORT_ORDER_COOKING_RANGE.get();
-        List<ServerPlayer> players = level.getEntitiesOfClass(ServerPlayer.class, new AABB(
-                pos.getX() - range, pos.getY() - range, pos.getZ() - range,
-                pos.getX() + range, pos.getY() + range, pos.getZ() + range),
-                player -> true);
+        AABB area = new AABB(
+            pos.getX() - range, pos.getY() - range, pos.getZ() - range,
+            pos.getX() + range, pos.getY() + range, pos.getZ() + range);
+
         double multiplier = 1.0;
-        for (ServerPlayer player : players) {
-            double attributeValue = player.getAttributeValue(FAAttributes.SHORT_ORDER_COOKING);
-            multiplier *= attributeValue;
+        for (Player player : level.players()) {
+            if (area.contains(player.getX(), player.getY(), player.getZ())) {
+                double attributeValue = player.getAttributeValue(FAAttributes.SHORT_ORDER_COOKING);
+                multiplier *= attributeValue;
+            }
         }
         return multiplier;
     }
