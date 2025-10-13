@@ -76,7 +76,7 @@ The duration of the Appetite given per level is configurable.
 The items that are not treated as "cooking" results (does not give effect) are defined by the tag: `#farmers_attributes:source_foods`  
 The blocks that gives the effect when placed are defined by the tag: `#farmers_attributes:delicious_smelling_blocks`  
 
-**short_order_cooking**
+**short_order_cooking**  
 The range to apply the speed modifier is configurable.
 
 **Appetite Effect**  
@@ -90,7 +90,7 @@ The skillet will apply the Appetite effect in an a radius like the campfire.
 The food blocks from Farmer's Delight (e.g. stuffed pumpkin) are included in the delicious_smelling_blocks tag by default.  
 
 **short_order_cooking**  
-Works on cooking pots and skillets.
+Works on cooking pots and skillets.  
 Values lower than 0.001 doesn't work on hand-held skillet cooking and will be handled as 0.001.
 
 ### Pufferfish's Skills
