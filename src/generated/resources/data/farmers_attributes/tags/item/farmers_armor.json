@@ -1,0 +1,9 @@
+{
+  "values": [
+    "minecraft:carved_pumpkin",
+    {
+      "id": "farmers_wearable_cooking_pot:cooking_pot_helmet_helmet",
+      "required": false
+    }
+  ]
+}

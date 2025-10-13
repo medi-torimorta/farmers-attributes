@@ -1,0 +1,13 @@
+{
+  "values": [
+    "#minecraft:hoes",
+    {
+      "id": "#farmersdelight:tools/knives",
+      "required": false
+    },
+    {
+      "id": "farmersdelight:skillet",
+      "required": false
+    }
+  ]
+}

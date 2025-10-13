@@ -1,7 +1,5 @@
 package medi.makiba.farmers_attributes.attribute;
 
-import java.util.List;
-
 import org.joml.Math;
 
 import medi.makiba.farmers_attributes.FAConfig;

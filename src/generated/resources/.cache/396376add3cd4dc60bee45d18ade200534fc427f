@@ -1,2 +1,4 @@
-// 1.21.1	2025-10-04T12:36:33.9289614	Tags for minecraft:item mod id farmers_attributes
+// 1.21.1	2025-10-14T02:38:19.7317522	Tags for minecraft:item mod id farmers_attributes
+f123a85d63fd314f6c614caac0b986f5d6efe101 data/farmers_attributes/tags/item/farmers_armor.json
+7ca12c1d346fc25be65c79d31851ba4c33502b43 data/farmers_attributes/tags/item/farmers_weapon.json
 928299f30ca242186286fe234ed16921f2e74182 data/farmers_attributes/tags/item/source_foods.json

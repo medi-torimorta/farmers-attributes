@@ -19,6 +19,8 @@ public class FATags {
 
     public static class Items {
         public static final TagKey<Item> SOURCE_FOODS = tag("source_foods");
+        public static final TagKey<Item> FARMERS_WEAPON = tag("farmers_weapon");
+        public static final TagKey<Item> FARMERS_ARMOR = tag("farmers_armor");
 
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(FarmersAttributes.MODID, name));

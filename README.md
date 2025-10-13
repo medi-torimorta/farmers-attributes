@@ -47,6 +47,12 @@ Multiply cooking speed for Smokers and Campfires in a small radius around the pl
 e.g. 0 to completely stop progress, 2 to double cooking speed.  
 Cooking with multiple players will multiply all of their values.  
 
+**farmers_weapon**  
+When using farmer's weapons (e.g. Hoe), the player gains extra damage.  
+
+**farmers_armor**  
+When using farmer's armors (e.g. Carved Pumpkin), the player gains extra armor.  
+
 ### MobEffects  
 **Appetite**  
 at level 1 : Allows the player to eat even when they're full  
@@ -77,7 +83,13 @@ The items that are not treated as "cooking" results (does not give effect) are d
 The blocks that gives the effect when placed are defined by the tag: `#farmers_attributes:delicious_smelling_blocks`  
 
 **short_order_cooking**  
-The range to apply the speed modifier is configurable.
+The range to apply the speed modifier is configurable.  
+
+**farmers_weapon**  
+Farmer's weapons are defined by the tag: `#farmers_attributes:farmers_weapon`  
+
+**farmers_armor**  
+Farmer's weapons are defined by the tag: `#farmers_attributes:farmers_armor` 
 
 **Appetite Effect**  
 The multiplier for extended food effect duration is configurable.

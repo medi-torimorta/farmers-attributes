@@ -4,6 +4,7 @@ import medi.makiba.farmers_attributes.FarmersAttributes;
 import medi.makiba.farmers_attributes.attribute.AntiFarmlandTrampling;
 import medi.makiba.farmers_attributes.attribute.CrouchBoneMeal;
 import medi.makiba.farmers_attributes.attribute.EasyHarvest;
+import medi.makiba.farmers_attributes.attribute.FarmersWeaponAndArmor;
 import medi.makiba.farmers_attributes.attribute.GreenThumb;
 import medi.makiba.farmers_attributes.attribute.ZestyCulinary;
 import medi.makiba.farmers_attributes.registry.FAAttributes;
@@ -19,6 +20,7 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent.ItemCraftedEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent.ItemSmeltedEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
@@ -51,6 +53,12 @@ public class FAEvents {
         event.add(
             EntityType.PLAYER,
             FAAttributes.SHORT_ORDER_COOKING);
+        event.add(
+            EntityType.PLAYER,
+            FAAttributes.FARMERS_WEAPON);
+        event.add(
+            EntityType.PLAYER,
+            FAAttributes.FARMERS_ARMOR);
     }
 
     @SubscribeEvent
@@ -136,5 +144,10 @@ public class FAEvents {
         if (!event.isNewChunk() && event.getLevel() instanceof ServerLevel) {
             GreenThumb.removeIrrelevantData(event.getChunk());
         }
+    }
+    
+    @SubscribeEvent
+    public static void addTooltipToFarmersTools(ItemTooltipEvent event) {
+        FarmersWeaponAndArmor.addTooltipToFarmersTools(event);
     }
 }

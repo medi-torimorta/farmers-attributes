@@ -1,5 +1,7 @@
 package medi.makiba.farmers_attributes.registry;
 
+import org.checkerframework.checker.units.qual.t;
+
 import medi.makiba.farmers_attributes.FarmersAttributes;
 
 import net.minecraft.core.Holder;
@@ -22,7 +24,7 @@ public class FAAttributes {
     public static final Holder<Attribute> EASY_HARVEST = ATTRIBUTES.register("easy_harvest", () -> new BooleanAttribute(
         "attributes.farmers_attributes.easy_harvest",
         false
-    ));
+    ).setSyncable(true));
 
     public static final Holder<Attribute> CROUCH_BONEMEAL_CHANCE = ATTRIBUTES.register("crouch_bonemeal_chance", () -> new PercentageAttribute(
         "attributes.farmers_attributes.crouch_bonemeal_chance",
@@ -48,6 +50,18 @@ public class FAAttributes {
         1024
     ));
 
-    //TODO: weapon and armor bonus related to chief
+    public static final Holder<Attribute> FARMERS_WEAPON = ATTRIBUTES.register("farmers_weapon", () -> new RangedAttribute(
+        "attributes.farmers_attributes.farmers_weapon",
+        1,
+        0,
+        1024
+    ).setSyncable(true));
+
+    public static final Holder<Attribute> FARMERS_ARMOR = ATTRIBUTES.register("farmers_armor", () -> new RangedAttribute(
+        "attributes.farmers_attributes.farmers_armor",
+        1,
+        0,
+        1024
+    ).setSyncable(true));
 
 }

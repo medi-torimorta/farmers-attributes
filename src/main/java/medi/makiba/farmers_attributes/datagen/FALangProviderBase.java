@@ -48,6 +48,10 @@ public abstract class FALangProviderBase extends LanguageProvider{
         add("effect." + this.modid + "." + effectName, name);
         add("effect." + this.modid + "." + effectName + ".description", Description);
     }
+
+    protected void addTooltip(String tooltipName, String name) {
+        add("tooltip." + this.modid + "." + tooltipName, name);
+    }
 }
 
 

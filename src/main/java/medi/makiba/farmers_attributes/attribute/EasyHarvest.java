@@ -55,14 +55,14 @@ public class EasyHarvest {
 
     public static boolean tryHarvest(Level level, BlockPos pos, Player player, Direction face, ItemStack heldItem) {
         BlockState state = level.getBlockState(pos);
-        if (!isEasyHarvestable(level, pos, state, face, heldItem)
+        if (!(FAConfig.FORCE_EASY_HARVEST.getAsBoolean() || player.getAttributeValue(FAAttributes.EASY_HARVEST) != 0)
+                || !isEasyHarvestable(level, pos, state, face, heldItem)
                 || player.isCrouching()
                 || !level.getGameRules().getBoolean(GameRules.RULE_DOBLOCKDROPS)) {
             return false;
         }
 
-        if (!(level instanceof ServerLevel serverLevel)
-                || !(FAConfig.FORCE_EASY_HARVEST.get() || player.getAttributeValue(FAAttributes.EASY_HARVEST) != 0)) {
+        if (!(level instanceof ServerLevel serverLevel)) {
             return true;
         }
         Block block = state.getBlock();
@@ -123,18 +123,17 @@ public class EasyHarvest {
     public static boolean tryHarvestLargeCrop(Level level, BlockPos pos, Player player, ItemStack heldItem) {
         BlockState state = level.getBlockState(pos);
         if (!(state.getBlock() instanceof LargeCropBlock largeCropBlock)
-                || !level.getGameRules().getBoolean(GameRules.RULE_DOBLOCKDROPS) || player.isCrouching()) {
+            || !(FAConfig.FORCE_EASY_HARVEST.getAsBoolean() || player.getAttributeValue(FAAttributes.EASY_HARVEST) != 0)
+            || !level.getGameRules().getBoolean(GameRules.RULE_DOBLOCKDROPS) || player.isCrouching()) {
             return false;
         }
         if (!(level instanceof ServerLevel serverLevel)) {
             return true;
         }
-        if (FAConfig.FORCE_EASY_HARVEST.getAsBoolean() || player.getAttributeValue(FAAttributes.EASY_HARVEST) != 0) {
-            harvestAndReplant(serverLevel, pos, state, largeCropBlock.originalCropState, (ServerPlayer) player,
-                    LargeCropBlock.getDrops(state, serverLevel, pos, null, player, heldItem), heldItem);
-            return true;
-        }
-        return false;
+
+        harvestAndReplant(serverLevel, pos, state, largeCropBlock.originalCropState, (ServerPlayer) player,
+            LargeCropBlock.getDrops(state, serverLevel, pos, null, player, heldItem), heldItem);
+        return true;
     }
 
     private static void harvestAndReplant(ServerLevel level, BlockPos pos, BlockState originalState, BlockState replacementState, ServerPlayer player,
