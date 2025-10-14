@@ -19,6 +19,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.AddAttributeTooltipsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent.ItemCraftedEvent;
@@ -147,7 +148,7 @@ public class FAEvents {
     }
     
     @SubscribeEvent
-    public static void addTooltipToFarmersTools(ItemTooltipEvent event) {
+    public static void addTooltipToFarmersTools(AddAttributeTooltipsEvent event) {
         FarmersWeaponAndArmor.addTooltipToFarmersTools(event);
     }
 }

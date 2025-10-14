@@ -1,6 +1,7 @@
 package medi.makiba.farmers_attributes.datagen;
 
 import medi.makiba.farmers_attributes.registry.FABlocks;
+import medi.makiba.farmers_attributes.registry.FAItems;
 import net.minecraft.data.PackOutput;
 
 public class FALangProviderEnUs extends FALangProviderBase {
@@ -69,5 +70,8 @@ public class FALangProviderEnUs extends FALangProviderBase {
         // Blocks
         addBlock(FABlocks.LARGE_BEETROOT, "Large Beetroot");
         addBlock(FABlocks.LARGE_CARROT, "Large Carrot");
+
+        // Items
+        addItem(FAItems.SHARP_CARROT, "Sharp Carrot");
     }
 }

@@ -27,6 +27,7 @@ public class FADataGenerators {
         generator.addProvider(event.includeClient(), new FALangProviderEnUs(output));
         generator.addProvider(event.includeClient(), new FALangProviderJaJp(output));
         generator.addProvider(event.includeClient(), new FABlockStateProvider(output, existingFileHelper));
+        generator.addProvider(event.includeClient(), new FAItemModelProvider(output, existingFileHelper));
         FABlockTagsProvider blockTags = new FABlockTagsProvider(output, lookupProvider, existingFileHelper);
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new FAItemTagsProvider(output, lookupProvider, blockTags.contentsGetter(), existingFileHelper));

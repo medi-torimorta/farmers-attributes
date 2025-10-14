@@ -1,5 +1,6 @@
 {
   "values": [
+    "farmers_attributes:sharp_carrot",
     "#minecraft:hoes",
     {
       "id": "#farmersdelight:tools/knives",

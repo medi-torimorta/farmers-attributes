@@ -1,7 +1,7 @@
 package medi.makiba.farmers_attributes.attribute;
 
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
-import java.util.List;
 
 import medi.makiba.farmers_attributes.registry.FAAttributes;
 import medi.makiba.farmers_attributes.registry.FATags;
@@ -10,13 +10,13 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
+import net.neoforged.neoforge.client.event.AddAttributeTooltipsEvent;
 
 public class FarmersWeaponAndArmor {
 
-    public static void addTooltipToFarmersTools(ItemTooltipEvent event) {
-        ItemStack stack = event.getItemStack();
-        if (stack == null || stack.isEmpty()) {
+    public static void addTooltipToFarmersTools(AddAttributeTooltipsEvent event) {
+        ItemStack stack = event.getStack();
+        if (stack == null || stack.isEmpty() || !event.shouldShow()) {
             return;
         }
         boolean isFarmersWeapon = stack.is(FATags.Items.FARMERS_WEAPON);
@@ -24,45 +24,44 @@ public class FarmersWeaponAndArmor {
         if (!isFarmersWeapon && !isFarmersArmor) {
             return;
         }
-        Player player = event.getEntity();
+        Player player = event.getContext().player();
         double weaponBonus = player != null && isFarmersWeapon ? player.getAttributeValue(FAAttributes.FARMERS_WEAPON) : 0.0;
         double armorBonus = player != null && isFarmersArmor ? player.getAttributeValue(FAAttributes.FARMERS_ARMOR) : 0.0;
         
         
-        List<Component> tooltip = event.getToolTip();
+        
 
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        decimalFormat.setRoundingMode(RoundingMode.CEILING);
 
-        int tooltipIndex = 0;
-        tooltipIndex = tooltip.size();
-        if(event.getFlags().isAdvanced()){
-            tooltipIndex -= 2;
-        }
-        if (tooltipIndex < 0) {
-            tooltipIndex = tooltip.size();
-        }
-        
-        
         if(isFarmersArmor){
             MutableComponent tooltipText;
+            String valueString = decimalFormat.format(armorBonus);
             if (player != null) {
-                tooltipText = Component.literal("+" + decimalFormat.format(armorBonus) + " ");
+                tooltipText = Component.literal("+" + valueString + " ");
             }else{
                 tooltipText = Component.literal("+? ");
             }
             tooltipText.append(Component.translatable("tooltip.farmers_attributes.armor_bonus"));
-            tooltip.add(tooltipIndex, tooltipText.withStyle(ChatFormatting.BLUE));
+            if (event.getContext().flag().isAdvanced()) {
+                tooltipText.append(Component.literal(" [+ " + valueString + "]").withStyle(ChatFormatting.GRAY));
+            }
+            event.addTooltipLines(tooltipText.withStyle(ChatFormatting.BLUE));
         }
 
         if(isFarmersWeapon){
             MutableComponent tooltipText;
+            String valueString = decimalFormat.format(weaponBonus);
             if (player != null) {
-                tooltipText = Component.literal("+" + decimalFormat.format(weaponBonus) + " ");
+                tooltipText = Component.literal("+" + valueString + " ");
             }else{
                 tooltipText = Component.literal("+? ");
             }
             tooltipText.append(Component.translatable("tooltip.farmers_attributes.weapon_bonus"));
-            tooltip.add(tooltipIndex, tooltipText.withStyle(ChatFormatting.BLUE));
+            if (event.getContext().flag().isAdvanced()) {
+                tooltipText.append(Component.literal(" [+ " + valueString + "]").withStyle(ChatFormatting.GRAY));
+            }
+            event.addTooltipLines(tooltipText.withStyle(ChatFormatting.BLUE));
         }
    }
 }

@@ -1,5 +1,7 @@
-// 1.21.1	2025-10-10T19:11:06.7096698	Recipes
+// 1.21.1	2025-10-14T11:45:42.1801736	Recipes
 19cfc3bc134bd02435cc7844abb07483bf969e5d data/farmers_attributes/advancement/recipes/misc/beetroot_from_large_beetroot.json
 fb07856031d11f2ab08cfcbf9010982b7bfa8178 data/farmers_attributes/advancement/recipes/misc/carrot_from_large_carrot.json
+1dff2f027a14b6fd94c34823ea6ca27ecb7bd945 data/farmers_attributes/advancement/recipes/misc/sharp_carrot.json
 3a5eac0243c4967c2df22eeb9e26e1383e6777c8 data/farmers_attributes/recipe/beetroot_from_large_beetroot.json
 47d410a33871f49a4257700f5639a85eb59df4ac data/farmers_attributes/recipe/carrot_from_large_carrot.json
+6a52fe338f7dacd6e3448aa5f2bf0b065fceca19 data/farmers_attributes/recipe/sharp_carrot.json

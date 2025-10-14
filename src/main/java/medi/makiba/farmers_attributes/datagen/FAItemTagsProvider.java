@@ -3,6 +3,7 @@ package medi.makiba.farmers_attributes.datagen;
 import java.util.concurrent.CompletableFuture;
 
 import medi.makiba.farmers_attributes.FarmersAttributes;
+import medi.makiba.farmers_attributes.registry.FAItems;
 import medi.makiba.farmers_attributes.registry.FATags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
@@ -30,11 +31,18 @@ public class FAItemTagsProvider extends ItemTagsProvider {
             .addTags(Tags.Items.CROPS, Tags.Items.SEEDS, Tags.Items.FOODS_FRUIT, Tags.Items.FOODS_VEGETABLE, Tags.Items.FOODS_RAW_MEAT, Tags.Items.FOODS_RAW_FISH)
             .add(Items.ROTTEN_FLESH, Items.SPIDER_EYE, Items.HONEY_BOTTLE);
         tag(FATags.Items.FARMERS_WEAPON)
+            .add(FAItems.SHARP_CARROT.get())
             .addTag(ItemTags.HOES)
             .addOptionalTag(ModTags.KNIVES)
             .addOptional(ResourceLocation.fromNamespaceAndPath(FarmersDelight.MODID, "skillet"));
         tag(FATags.Items.FARMERS_ARMOR)
             .add(Items.CARVED_PUMPKIN)
             .addOptional(ResourceLocation.fromNamespaceAndPath("farmers_wearable_cooking_pot", "cooking_pot_helmet_helmet"));
+        tag(Tags.Items.MELEE_WEAPON_TOOLS)
+            .add(FAItems.SHARP_CARROT.get());
+        tag(ItemTags.SWORDS)
+            .add(FAItems.SHARP_CARROT.get());
+        tag(ItemTags.SWORD_ENCHANTABLE)
+            .add(FAItems.SHARP_CARROT.get());
     }
 }
