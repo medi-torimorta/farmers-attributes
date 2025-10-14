@@ -58,6 +58,11 @@ For each farmer's armors (e.g. Carved Pumpkin) piece, the player gains extra arm
 at level 1 : Allows the player to eat even when they're full  
 at level 2+: when the player gains any other positive food effects, adds x0.5(configurable) of the original duration per (level-1)   
 
+### Items & Blocks
+- Large BeetRoot
+- Large Carrot
+- Sharp Carrot
+
 ## Configuration
 The following can be configured in the farmers_attributes-server.toml, unless otherwise specified.
 
@@ -93,10 +98,6 @@ Farmer's armors are defined by the tag: `#farmers_attributes:farmers_armor`
 
 **Appetite Effect**  
 The multiplier for extended food effect duration is configurable.  
-### Items & Blocks
-- Large BeetRoot
-- Large Carrot
-- Sharp Carrot
 
 ## Integration
 ### Farmer's Delight
