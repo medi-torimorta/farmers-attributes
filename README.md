@@ -48,10 +48,10 @@ e.g. 0 to completely stop progress, 2 to double cooking speed.
 Cooking with multiple players will multiply all of their values.  
 
 **farmers_weapon**  
-When using farmer's weapons (e.g. Hoe), the player gains extra damage.  
+When using farmer's weapons (e.g. Hoe), the player gains extra damage equal to the attribute value.  
 
 **farmers_armor**  
-When using farmer's armors (e.g. Carved Pumpkin), the player gains extra armor.  
+For each farmer's armors (e.g. Carved Pumpkin) piece, the player gains extra armor equal to the attribute value.  
 
 ### MobEffects  
 **Appetite**  
@@ -89,7 +89,7 @@ The range to apply the speed modifier is configurable.
 Farmer's weapons are defined by the tag: `#farmers_attributes:farmers_weapon`  
 
 **farmers_armor**  
-Farmer's weapons are defined by the tag: `#farmers_attributes:farmers_armor`  
+Farmer's armors are defined by the tag: `#farmers_attributes:farmers_armor`  
 
 **Appetite Effect**  
 The multiplier for extended food effect duration is configurable.  
@@ -106,7 +106,7 @@ Works on cooking pots and skillets.
 Values lower than 0.001 doesn't work on hand-held skillet cooking and will be handled as 0.001.  
 
 **farmers_weapon**  
-Skillets and knifes are indluded in the farmers_weapon tag by default.  
+Skillets and knives are included in the farmers_weapon tag by default.  
 
 ### Pufferfish's Skills
 **easy_harvest**  
