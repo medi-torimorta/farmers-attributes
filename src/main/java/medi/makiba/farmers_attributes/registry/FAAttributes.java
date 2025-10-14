@@ -50,14 +50,14 @@ public class FAAttributes {
 
     public static final Holder<Attribute> FARMERS_WEAPON = ATTRIBUTES.register("farmers_weapon", () -> new RangedAttribute(
         "attributes.farmers_attributes.farmers_weapon",
-        1,
+        0,
         0,
         1024
     ).setSyncable(true));
 
     public static final Holder<Attribute> FARMERS_ARMOR = ATTRIBUTES.register("farmers_armor", () -> new RangedAttribute(
         "attributes.farmers_attributes.farmers_armor",
-        1,
+        0,
         0,
         1024
     ).setSyncable(true));
