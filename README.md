@@ -48,7 +48,7 @@ e.g. 0 to completely stop progress, 2 to double cooking speed.
 Cooking with multiple players will multiply all of their values.  
 
 **farmers_weapon**  
-When using farmer's weapons (e.g. Hoe), the player gains extra damage equal to the attribute value.  
+When using farmer's weapons (e.g. Sharp Carrot), the player gains extra damage equal to the attribute value.  
 
 **farmers_armor**  
 For each farmer's armors (e.g. Carved Pumpkin) piece, the player gains extra armor equal to the attribute value.  
@@ -93,6 +93,10 @@ Farmer's armors are defined by the tag: `#farmers_attributes:farmers_armor`
 
 **Appetite Effect**  
 The multiplier for extended food effect duration is configurable.  
+### Items & Blocks
+- Large BeetRoot
+- Large Carrot
+- Sharp Carrot
 
 ## Integration
 ### Farmer's Delight
