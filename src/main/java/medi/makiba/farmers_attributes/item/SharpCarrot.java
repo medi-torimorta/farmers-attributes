@@ -1,6 +1,5 @@
 package medi.makiba.farmers_attributes.item;
 
-import medi.makiba.farmers_attributes.registry.FAItems;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
