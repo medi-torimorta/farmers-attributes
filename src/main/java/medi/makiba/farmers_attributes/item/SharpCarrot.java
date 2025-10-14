@@ -1,5 +1,7 @@
 package medi.makiba.farmers_attributes.item;
 
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -18,6 +20,7 @@ import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.SimpleTier;
 
 public class SharpCarrot extends SwordItem {
+    private static int BITE_SIZE = 80;
     private static Tier tier = new SimpleTier(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 250, 2.0f, 0.0f, 15, () -> Ingredient.of(Items.CARROT));
     private static FoodProperties foodProperties = (new FoodProperties.Builder()).nutrition(12).saturationModifier(0.6F).build();
     public SharpCarrot() {
@@ -50,7 +53,18 @@ public class SharpCarrot extends SwordItem {
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
         livingEntity.eat(level, stack.copy(), foodProperties);
-        stack.hurtAndBreak(80, livingEntity, livingEntity.getUsedItemHand() == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
+        if (stack.isDamageableItem()) {
+            if (livingEntity == null || !livingEntity.hasInfiniteMaterials()){
+                if (livingEntity instanceof ServerPlayer sp) {
+                    CriteriaTriggers.ITEM_DURABILITY_CHANGED.trigger(sp, stack, stack.getDamageValue() + BITE_SIZE);
+                }
+                int damage = stack.getDamageValue() + BITE_SIZE;
+                stack.setDamageValue(damage);
+                if (damage >= stack.getMaxDamage()) {
+                    stack.shrink(1);
+                }
+            }
+        }
         return stack;
     }
 }
