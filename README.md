@@ -30,7 +30,6 @@ Chance (0.0-1.0) for the bonemeal effect to be applied to nearby crops and sapli
 **green_thumb**  
 Chance (0.0-1.0) for crops planted by the player to become their Large variants upon reaching max growth state, or give double drops upon harvesting if a large variant is unavailable.  
 Large variants can only appear when grown naturally (no bonemeal)  
-Currently, only large carrots and beetroots are implemented.  
 
 **zesty_culinary**  
 If 1+, gain the Appetite MobEffect for 30 seconds upon crafting food.  
