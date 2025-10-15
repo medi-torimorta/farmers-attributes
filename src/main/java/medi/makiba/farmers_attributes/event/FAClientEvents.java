@@ -16,8 +16,8 @@ public class FAClientEvents {
 		}
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
             event.accept(FAItems.LARGE_CARROT.get());// follow vanilla order
-			event.accept(FAItems.LARGE_BEETROOT.get());
 			event.accept(FAItems.LARGE_POTATO.get());
+			event.accept(FAItems.LARGE_BEETROOT.get());
 		}
 	}
 }

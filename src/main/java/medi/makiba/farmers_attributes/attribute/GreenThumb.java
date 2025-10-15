@@ -42,7 +42,8 @@ public class GreenThumb {
 
     private static final Map<Block, BlockState> largeCrops = Map.of(
         Blocks.BEETROOTS, LargeCropBlock.getEarthedState(FABlocks.LARGE_BEETROOT.get().defaultBlockState()),
-        Blocks.CARROTS, LargeCropBlock.getEarthedState(FABlocks.LARGE_CARROT.get().defaultBlockState())
+        Blocks.CARROTS, LargeCropBlock.getEarthedState(FABlocks.LARGE_CARROT.get().defaultBlockState()),
+        Blocks.POTATOES, LargeCropBlock.getEarthedState(FABlocks.LARGE_POTATO.get().defaultBlockState())
     );
 
     // called on CropGrowEvent.Post
