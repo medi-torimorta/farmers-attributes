@@ -1,0 +1,10 @@
+{
+  "parent": "farmers_attributes:block/large_crops_in_ground",
+  "textures": {
+    "bottom": "farmers_attributes:block/large_potato_face",
+    "leaves": "farmers_attributes:block/large_potato_leaves",
+    "particle": "farmers_attributes:block/large_potato_face",
+    "side": "farmers_attributes:block/large_potato_face",
+    "top": "farmers_attributes:block/large_potato_face"
+  }
+}

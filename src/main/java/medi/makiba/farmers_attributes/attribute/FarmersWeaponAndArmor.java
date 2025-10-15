@@ -25,16 +25,13 @@ public class FarmersWeaponAndArmor {
             return;
         }
         Player player = event.getContext().player();
-        double weaponBonus = player != null && isFarmersWeapon ? player.getAttributeValue(FAAttributes.FARMERS_WEAPON) : 0.0;
-        double armorBonus = player != null && isFarmersArmor ? player.getAttributeValue(FAAttributes.FARMERS_ARMOR) : 0.0;
-        
-        
-        
+        double weaponBonus = player != null && isFarmersWeapon ? player.getAttributeValue(FAAttributes.FARMERS_WEAPON) : -1;
+        double armorBonus = player != null && isFarmersArmor ? player.getAttributeValue(FAAttributes.FARMERS_ARMOR) : -1;
 
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         decimalFormat.setRoundingMode(RoundingMode.CEILING);
 
-        if(isFarmersArmor){
+        if(isFarmersArmor && armorBonus != 0){
             MutableComponent tooltipText;
             String valueString = decimalFormat.format(armorBonus);
             if (player != null) {
@@ -44,12 +41,12 @@ public class FarmersWeaponAndArmor {
             }
             tooltipText.append(Component.translatable("tooltip.farmers_attributes.armor_bonus"));
             if (event.getContext().flag().isAdvanced()) {
-                tooltipText.append(Component.literal(" [+ " + valueString + "]").withStyle(ChatFormatting.GRAY));
+                tooltipText.append(Component.literal(" [+" + valueString + "]").withStyle(ChatFormatting.GRAY));
             }
             event.addTooltipLines(tooltipText.withStyle(ChatFormatting.BLUE));
         }
 
-        if(isFarmersWeapon){
+        if(isFarmersWeapon && weaponBonus != 0){
             MutableComponent tooltipText;
             String valueString = decimalFormat.format(weaponBonus);
             if (player != null) {
@@ -59,7 +56,7 @@ public class FarmersWeaponAndArmor {
             }
             tooltipText.append(Component.translatable("tooltip.farmers_attributes.weapon_bonus"));
             if (event.getContext().flag().isAdvanced()) {
-                tooltipText.append(Component.literal(" [+ " + valueString + "]").withStyle(ChatFormatting.GRAY));
+                tooltipText.append(Component.literal(" [+" + valueString + "]").withStyle(ChatFormatting.GRAY));
             }
             event.addTooltipLines(tooltipText.withStyle(ChatFormatting.BLUE));
         }

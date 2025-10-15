@@ -23,6 +23,8 @@ public class FABlockLootSubProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(FABlocks.LARGE_BEETROOT.get());
+		dropSelf(FABlocks.LARGE_CARROT.get());
+		dropSelf(FABlocks.LARGE_POTATO.get());
     }
 
     @Override

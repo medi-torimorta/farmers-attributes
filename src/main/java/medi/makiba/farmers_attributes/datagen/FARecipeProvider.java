@@ -26,6 +26,7 @@ public class FARecipeProvider extends RecipeProvider{
 	protected void buildRecipes(RecipeOutput output) {
         largeCropUnpacking(output, FAItems.LARGE_BEETROOT.get(), Items.BEETROOT, 6);
         largeCropUnpacking(output, FAItems.LARGE_CARROT.get(), Items.CARROT, 9);
+        largeCropUnpacking(output, FAItems.LARGE_POTATO.get(), Items.POTATO, 10);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, FAItems.SHARP_CARROT.get())
             .pattern(" C ")
             .pattern(" C ")

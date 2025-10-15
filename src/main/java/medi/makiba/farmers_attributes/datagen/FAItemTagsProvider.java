@@ -34,10 +34,14 @@ public class FAItemTagsProvider extends ItemTagsProvider {
             .add(FAItems.SHARP_CARROT.get())
             .addTag(ItemTags.HOES)
             .addOptionalTag(ModTags.KNIVES)
-            .addOptional(ResourceLocation.fromNamespaceAndPath(FarmersDelight.MODID, "skillet"));
+            .addOptional(ResourceLocation.fromNamespaceAndPath(FarmersDelight.MODID, "skillet"))
+            .addOptional(ResourceLocation.fromNamespaceAndPath("create", "potato_cannon"));
         tag(FATags.Items.FARMERS_ARMOR)
             .add(Items.CARVED_PUMPKIN)
             .addOptional(ResourceLocation.fromNamespaceAndPath("farmers_wearable_cooking_pot", "cooking_pot_helmet_helmet"));
+        tag(Tags.Items.CROPS)
+            .add(FAItems.LARGE_CARROT.get())
+            .add(FAItems.LARGE_BEETROOT.get());
         tag(Tags.Items.MELEE_WEAPON_TOOLS)
             .add(FAItems.SHARP_CARROT.get());
         tag(ItemTags.SWORDS)

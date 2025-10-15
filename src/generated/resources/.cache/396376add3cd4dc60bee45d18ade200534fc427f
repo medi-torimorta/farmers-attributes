@@ -1,7 +1,8 @@
-// 1.21.1	2025-10-14T11:42:00.3522967	Tags for minecraft:item mod id farmers_attributes
+// 1.21.1	2025-10-15T08:37:16.0405702	Tags for minecraft:item mod id farmers_attributes
+a189eaa882a53e8471a0632bae0a28ee4d4b293f data/c/tags/item/crops.json
 f0ed9237099e8b2d55008ef950c532b98d986b42 data/c/tags/item/tools/melee_weapon.json
 f123a85d63fd314f6c614caac0b986f5d6efe101 data/farmers_attributes/tags/item/farmers_armor.json
-ca9f4110052751d4e91f11a3d83caf78c6cf0e91 data/farmers_attributes/tags/item/farmers_weapon.json
+8e63dff54ce07c1b9e94a678d64ea1c5fdf27390 data/farmers_attributes/tags/item/farmers_weapon.json
 928299f30ca242186286fe234ed16921f2e74182 data/farmers_attributes/tags/item/source_foods.json
 f0ed9237099e8b2d55008ef950c532b98d986b42 data/minecraft/tags/item/enchantable/sword.json
 f0ed9237099e8b2d55008ef950c532b98d986b42 data/minecraft/tags/item/swords.json

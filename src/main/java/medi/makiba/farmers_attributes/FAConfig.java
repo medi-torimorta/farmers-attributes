@@ -89,7 +89,7 @@ public class FAConfig {
         GREEN_THUMB_LARGE_CROPS_ALLOWED = BUILDER
             .comment("Blocks that are allowed to be converted into large crops by the Green Thumb attribute. Includes all available large crops by default, remove as needed.")
             .translation("config.farmers_attributes.green_thumb_large_crops_allowed")
-            .defineListAllowEmpty("green_thumb_large_crops_allowed", List.of("minecraft:beetroots", "minecraft:carrots"), () -> "", FAConfig::validateBlockName);
+            .defineListAllowEmpty("green_thumb_large_crops_allowed", List.of("minecraft:beetroots", "minecraft:carrots", "minecraft:potatoes"), () -> "", FAConfig::validateBlockName);
 
         GREEN_THUMB_DROP_MULTIPLIER = BUILDER
             .comment("Used for crops not listed above. Multiplier for the crop drops which are affected by Green Thumb. set 1 to disable.")

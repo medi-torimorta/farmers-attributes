@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "in_ground=false": {
+      "model": "farmers_attributes:block/large_potato"
+    },
+    "in_ground=true": {
+      "model": "farmers_attributes:block/large_potato_in_ground"
+    }
+  }
+}

@@ -70,8 +70,12 @@ public class FALangProviderEnUs extends FALangProviderBase {
         // Blocks
         addBlock(FABlocks.LARGE_BEETROOT, "Large Beetroot");
         addBlock(FABlocks.LARGE_CARROT, "Large Carrot");
+        addBlock(FABlocks.LARGE_POTATO, "Large Potato");
 
         // Items
         addItem(FAItems.SHARP_CARROT, "Sharp Carrot");
+
+        // Search aliases
+        add("farmers_attributes.emi.aliases.sharp_carrot", "Carrot Sword");
     }
 }

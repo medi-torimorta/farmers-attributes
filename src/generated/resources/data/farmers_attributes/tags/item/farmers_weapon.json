@@ -9,6 +9,10 @@
     {
       "id": "farmersdelight:skillet",
       "required": false
+    },
+    {
+      "id": "create:potato_cannon",
+      "required": false
     }
   ]
 }

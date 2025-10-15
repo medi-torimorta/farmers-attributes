@@ -1,2 +1,4 @@
-// 1.21.1	2025-10-04T05:14:22.1409305	Loot Tables
+// 1.21.1	2025-10-15T17:07:57.3130561	Loot Tables
 7420a2ea548753d21455939be7020082cfc5117f data/farmers_attributes/loot_table/blocks/large_beetroot.json
+534ea816a567fd0a0209bf1c33ad26d59219c77e data/farmers_attributes/loot_table/blocks/large_carrot.json
+c456120e79fa4a90088648970f1e8a9c1b3125df data/farmers_attributes/loot_table/blocks/large_potato.json

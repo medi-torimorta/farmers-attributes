@@ -54,7 +54,7 @@ public class FALangProviderJaJp extends FALangProviderBase {
         addAttribute("zesty_culinary", "料理上手", "食べ物を調理すると食欲エフェクトを付与します。焚き火調理などの一部の調理法や、食べ物をブロックとして設置した際には周囲のプレイヤーにもエフェクトを付与します。");
         addAttribute("green_thumb", "緑の親指", "確率で作物が大きく成長したり、ドロップ量が増加したりします。");
         addAttribute("easy_harvest", "簡易収穫", "成熟した作物を右クリックで素早く収穫し、種があれば植え直します。");
-        addAttribute("short_order_cooking", "調理時間短縮", "各種調理ブロックでの調理にかかる時間を短縮します。");
+        addAttribute("short_order_cooking", "時短料理", "各種調理ブロックでの調理にかかる時間を短縮します。");
         addAttribute("farmers_weapon", "農家の武器", "農家の武器に分類される武器の攻撃力が増加します。");
         addAttribute("farmers_armor", "農家の防具", "農家の防具に分類される防具の防御力が増加します。");
 
@@ -69,7 +69,11 @@ public class FALangProviderJaJp extends FALangProviderBase {
         // Blocks
         addBlock(FABlocks.LARGE_BEETROOT, "大きなビートルート");
         addBlock(FABlocks.LARGE_CARROT, "大きなニンジン");
+        addBlock(FABlocks.LARGE_POTATO, "大きなジャガイモ");
         // Items
         addItem(FAItems.SHARP_CARROT, "鋭いニンジン");
+
+        // Search aliases
+        add("farmers_attributes.emi.aliases.sharp_carrot", "ニンジンの剣");
     }
 }

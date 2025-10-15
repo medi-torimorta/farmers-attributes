@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "farmers_attributes:large_potato"
+    }
+  ],
+  "result": {
+    "count": 10,
+    "id": "minecraft:potato"
+  }
+}

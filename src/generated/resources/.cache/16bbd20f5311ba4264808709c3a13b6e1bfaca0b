@@ -1,9 +1,13 @@
-// 1.21.1	2025-10-10T19:00:54.515076	Block States: farmers_attributes
+// 1.21.1	2025-10-15T16:56:20.5687643	Block States: farmers_attributes
 1393085e276beb334efe4756ae4c723ad5568b88 assets/farmers_attributes/blockstates/large_beetroot.json
 2da86d2f2ca2b4dc299a2546358158271e1b483f assets/farmers_attributes/blockstates/large_carrot.json
+b8f71d58a092706550216e054baa668a6fb44b13 assets/farmers_attributes/blockstates/large_potato.json
 e3afec6152ac51823ca8fa75acec49a7fc47f0bf assets/farmers_attributes/models/block/large_beetroot.json
 929140717d0a85a457cfe89d0db853021c26a736 assets/farmers_attributes/models/block/large_beetroot_in_ground.json
 a4e7bd17a3ff7b3e004c0cad27ad9a1d912ad90d assets/farmers_attributes/models/block/large_carrot.json
 57c518f5573efcaa4f16f774055291543248b021 assets/farmers_attributes/models/block/large_carrot_in_ground.json
+bc26b0f7518c2c0644b17979ae667869366dfde5 assets/farmers_attributes/models/block/large_potato.json
+1dcd938de3198cdc336ec180ff9b639144972bc3 assets/farmers_attributes/models/block/large_potato_in_ground.json
 1900881f6325692a025a43c1ad382119ad35d86f assets/farmers_attributes/models/item/large_beetroot.json
 46e9ee7f0a75d8385f360e7d9ebd5a92ea5057e1 assets/farmers_attributes/models/item/large_carrot.json
+cc8470300b9f6d2ba3efe2907dd6d5011a3501d7 assets/farmers_attributes/models/item/large_potato.json

@@ -24,6 +24,7 @@ public class FABlockStateProvider extends BlockStateProvider{
         
         largeCropBlock(FABlocks.LARGE_BEETROOT);
         largeCropBlock(FABlocks.LARGE_CARROT);
+        largeCropBlockNoRotation(FABlocks.LARGE_POTATO);
     }
 
     private void largeCropBlock(DeferredBlock<?> block) {
@@ -56,5 +57,24 @@ public class FABlockStateProvider extends BlockStateProvider{
         itemModels().getBuilder(this.modLoc(block.getId().getPath()).toString()).parent(model_up);
     }
 
+    private void largeCropBlockNoRotation(DeferredBlock<?> block) {
+        ResourceLocation face = this.modLoc("block/" + block.getId().getPath() + "_face");
+        ResourceLocation leaves = this.modLoc("block/" + block.getId().getPath() + "_leaves");
+        ModelFile model_up = models()
+            .withExistingParent(block.getId().toString(), this.mcLoc("block/cube_all"))
+            .texture("all", face);
+        ModelFile model_in_ground = models()
+            .withExistingParent(block.getId().toString() + "_in_ground", this.modLoc("block/large_crops_in_ground"))
+            .texture("top", face)
+            .texture("side", face)
+            .texture("bottom", face)
+            .texture("leaves", leaves)
+            .texture("particle", face);
+        VariantBlockStateBuilder variantBuilder = getVariantBuilder(block.get());
+        variantBuilder
+            .addModels(variantBuilder.partialState().with(LargeCropBlock.IN_GROUND, true), ConfiguredModel.builder().modelFile(model_in_ground).build())
+            .addModels(variantBuilder.partialState().with(LargeCropBlock.IN_GROUND, false), ConfiguredModel.builder().modelFile(model_up).build());
+        itemModels().getBuilder(this.modLoc(block.getId().getPath()).toString()).parent(model_up);
+    }
     
 }
